@@ -2,7 +2,7 @@
 
 **Development Strategy:** Milestone-driven, incremental implementation with code reviews and technical mentoring at every step.  
 **Theme Slug:** `hasibshah-news`  
-**Target Environment:** WordPress 6.6+ / 7.x, PHP 8.1 - 8.4  
+**Target Environment:** WordPress 6.6+ / 7.x, PHP 8.3 - 8.4 (Requires PHP: 8.3)  
 **Current Milestone:** Phase 0 (Planning & Architecture Review - Awaiting User Approval)  
 
 ---

@@ -72,16 +72,20 @@
    - Cleaned `index.php` excerpt loop. Acknowledged that `wp_link_pages()` belongs in full-content templates (`single.php` / `page.php`), which are scheduled for **Phase 5**. No dummy calls were added.
 3. **Scoped Gitignore Patterns:**
    - Fixed root-level file patterns in `.gitignore` (`/index.php`, `/wp-config.php`) so theme templates like `wp-content/themes/hasibshah-news/index.php` are properly tracked in version control.
-4. **PHP Minimum Version Evaluation:**
-   - Acknowledged that PHP 8.1 reached End-of-Life (EOL) on December 31, 2025.
-   - Evaluated modern runtimes (PHP 8.2, 8.3, 8.4). Verified that all Phase 1 theme code runs cleanly on local PHP 8.4.27 without deprecation warnings. Prepared recommendation for minimum version update upon user confirmation.
+4. **PHP Minimum Version Approved (`Requires PHP: 8.3`):**
+   - User formally approved **PHP 8.3** as the minimum required PHP version for HasibShah News.
+   - Updated `Requires PHP: 8.3` in `style.css`, `readme.txt`, `ARCHITECTURE.md`, `PROJECT-PLAN.md`, and `DEVELOPMENT-ROADMAP.md`.
+   - Reconfigured local Studio server via `studio config set --php 8.3` to download and run the official **PHP 8.3.36** runtime.
+   - Verified code execution and syntax compatibility across both **PHP 8.3.36** and **PHP 8.4.27**.
 
 #### Verification & Test Results Breakdown:
 
 ##### A. Passed Static & Runtime Tests:
 - **Theme Activation:** Switched to `HasibShah News` cleanly via Studio WP-CLI.
-- **PHP Syntax & Runtime Audit:** Ran all 8 PHP files on PHP 8.4.27; `wp-content/debug.log` has 0 notices, 0 warnings, and 0 fatal errors.
-- **HTTP Front-End Rendering:** `GET http://my-jyoyful-website.wp.local/` returned `HTTP 200 OK` with semantic HTML5 elements.
+- **PHP Syntax & Runtime Audit (Tested on PHP 8.3.36 & PHP 8.4.27):**
+  - Ran all 8 PHP files under active PHP 8.3.36 runtime; `wp-content/debug.log` has exactly 0 notices, 0 warnings, and 0 fatal errors.
+  - Previously tested under PHP 8.4.27 with 0 errors.
+- **HTTP Front-End Rendering:** `GET http://my-jyoyful-website.wp.local/` returned `HTTP 200 OK` under PHP 8.3.36 with semantic HTML5 elements.
 - **Image Specifications:** `screenshot.png` verified at 1200x900px PNG format (28KB).
 - **Block Configuration:** `theme.json` syntax and schema validated against WP v3 standard.
 
@@ -89,7 +93,7 @@
 - **Overall Scan Status:** `FAILED / NEEDS ATTENTION` (Expected for Phase 1 milestone)
 - **Deferred Critical Findings (REQUIRED): 1**
   - `[REQUIRED] REQUIRED: Could not find wp_link_pages. See: wp_link_pages <?php wp_link_pages( $args ); ?>`  
-    *Deferred Reason:* `wp_link_pages()` belongs in `single.php` / `page.php` with `the_content()`. It will be implemented in **Phase 5**.
+    *Deferred Reason:* `wp_link_pages()` belongs in `single.php` / `page.php` with `the_content()`. It will be implemented in **Phase 5**. No dummy call was added to Phase 1 files.
 - **Warnings (WARNING): 0**
 - **Recommendations / Deferred Info (INFO): 17**
   - Missing block patterns / block styles (scheduled for Phase 7).

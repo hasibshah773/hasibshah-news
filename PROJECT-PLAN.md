@@ -5,7 +5,7 @@
 **Text Domain:** `hasibshah-news`  
 **Architecture:** Modern Hybrid Theme (PHP Templates + `theme.json` v3 + Elementor Compatible)  
 **Target Core:** WordPress 6.6+ / 7.x (aligning with `theme.json` v3 specification)  
-**Target PHP:** PHP 8.1 - 8.4  
+**Target PHP:** PHP 8.3 - 8.4 (Requires PHP: 8.3)  
 **Lead Architect:** Senior WordPress Theme Architect & Technical Lead  
 **Mentee / Developer:** Junior WordPress Theme Developer  
 

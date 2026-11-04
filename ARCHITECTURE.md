@@ -4,7 +4,7 @@
 **Theme Slug:** `hasibshah-news`  
 **Text Domain:** `hasibshah-news`  
 **PHP Prefix:** `hasibshah_news_` / `HASIBSHAH_NEWS_`  
-**Target Environment:** WordPress 6.6+ / 7.x, PHP 8.1 - 8.4  
+**Target Environment:** WordPress 6.6+ / 7.x, PHP 8.3 - 8.4 (Requires PHP: 8.3)  
 *Note on Version Compatibility:* `theme.json` version 3 was introduced in WordPress 6.6. To guarantee 100% specification compatibility with `theme.json` v3, the minimum supported WordPress version is declared as **WordPress 6.6** (`Requires at least: 6.6`).
 
 ---
