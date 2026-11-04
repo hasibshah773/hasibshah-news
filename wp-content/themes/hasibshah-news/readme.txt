@@ -6,7 +6,7 @@ Requires PHP: 8.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Tags: news, blog, newspaper, entertainment, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, wide-blocks
+Tags: news, blog, entertainment, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, wide-blocks
 
 HasibShah News is an authoritative, high-performance, and responsive WordPress theme tailored for Bangladeshi digital newspapers, news portals, and editorial magazines.
 

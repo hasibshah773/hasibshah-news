@@ -89,6 +89,7 @@ if ( ! function_exists( 'hasibshah_news_setup' ) ) :
 
 		// Enable editor styles so Gutenberg matches front-end typography.
 		add_theme_support( 'editor-styles' );
+		add_editor_style( 'assets/css/editor-style.css' );
 	}
 endif;
 add_action( 'after_setup_theme', 'hasibshah_news_setup' );
