@@ -52,56 +52,42 @@
 
 ---
 
-### Entry 003 - Phase 1 Complete: Theme Scaffolding & WordPress.org Required Files
+### Entry 003 - Phase 1 Initial Scaffolding
 **Date:** November 4, 2026  
-**Status:** Completed (Awaiting User Review & Approval for Phase 2)
+**Status:** Completed
 
 #### Actions Completed:
-1. **Version Control:**
-   - Initialized Git repository in project root (`.git`).
-   - Configured `.gitignore` to protect WordPress core files, SQLite database, and Studio tooling while tracking theme files and documentation.
-2. **Directory Scaffolding:**
-   - Created full modular folder hierarchy inside `wp-content/themes/hasibshah-news/`:
-     - `assets/` (`css/`, `js/`, `fonts/`, `images/`)
-     - `inc/` (`core/`, `editorial/`, `compatibility/`, `customizer/`)
-     - `template-parts/` (`header/`, `content/`, `news-sections/`, `footer/`)
-     - `page-templates/`, `languages/`
-3. **Mandatory & Core Files Implemented:**
-   - `style.css`: Official metadata header, GPL license, valid tags (removed deprecated `newspaper`), baseline accessible `.skip-link` and `.screen-reader-text` classes.
-   - `readme.txt`: Standard WordPress.org headers, GPL license description, FAQ, and changelog.
-   - `screenshot.png`: High-resolution 1200x900px PNG (4:3 aspect ratio, 28KB), matching modern WordPress directory requirements.
-   - `theme.json` (v3): Configured schema, `appearanceTools: true`, content/wide layout constraints, custom design system color palette, and fluid typography scale.
-   - `functions.php`: Theme constants (`HASIBSHAH_NEWS_VERSION`, `HASIBSHAH_NEWS_DIR`, `HASIBSHAH_NEWS_URI`), `$content_width` filter, and modular loaders for `inc/core/`.
-   - `inc/core/setup.php`: `after_setup_theme` hook registering `load_theme_textdomain`, `title-tag`, `post-thumbnails`, `custom-logo`, `html5`, `responsive-embeds`, `align-wide`, `editor-styles`, 3 navigation menus (`primary`, `topbar`, `footer`), and custom editorial image sizes (`hasibshah-news-lead`, `hasibshah-news-card`, `hasibshah-news-thumb`).
-   - `inc/core/assets.php`: `wp_enqueue_scripts` hook enqueuing `style.css` and conditional `comment-reply` script.
-   - `inc/core/template-tags.php`: Semantic helper tags for `hasibshah_news_posted_on()` and `hasibshah_news_posted_by()`.
-   - `header.php`: Valid semantic HTML5 head, `wp_head()`, `body_class()`, `wp_body_open()`, skip link, masthead container, branding, and action hooks (`hasibshah_news_before_header`, `hasibshah_news_after_header`).
-   - `footer.php`: Semantic `<footer>`, copyright info, action hooks (`hasibshah_news_before_footer`, `hasibshah_news_after_footer`), and `wp_footer()`.
-   - `index.php`: Primary required fallback loop with `have_posts()`, `the_post()`, post thumbnail, title, entry meta, `the_excerpt()`, `wp_link_pages()`, and accessible pagination (`the_posts_pagination()`).
-   - `comments.php`: Fully accessible comments template with password protection handling, `wp_list_comments()`, `the_comments_navigation()`, and `comment_form()`.
-   - `assets/css/editor-style.css`: Editor stylesheet placeholder linked via `add_editor_style()`.
+1. Initialized Git repository and created `.gitignore`.
+2. Created modular directory structure in `wp-content/themes/hasibshah-news/`.
+3. Created initial baseline theme files: `style.css`, `index.php`, `comments.php`, `screenshot.png` (1200x900), `readme.txt`, `theme.json` (v3), `functions.php`, `header.php`, `footer.php`, `inc/core/setup.php`, `inc/core/assets.php`, `inc/core/template-tags.php`, `assets/css/editor-style.css`.
+4. Successfully registered and activated theme via WordPress Studio CLI.
 
-#### Verification & Testing Performed:
-1. **Theme Registration & Recognition:**
-   - Ran `studio wp theme list` -> `hasibshah-news` recognized.
-   - Ran `studio wp theme get hasibshah-news` -> all metadata, tags, version 1.0.0, screenshot properly registered.
-2. **Theme Activation:**
-   - Activated via `studio wp theme activate hasibshah-news` -> Successfully activated with 0 errors.
-3. **Runtime & Debug Log Audit:**
-   - Enabled WP debugging (`--debug-log`, `--debug-display`).
-   - Inspected `wp-content/debug.log` -> File empty / zero PHP warnings, notices, or fatal errors.
-4. **Front-End HTTP Rendering:**
-   - Sent HTTP GET request to `http://my-jyoyful-website.wp.local/` -> Returned `HTTP 200 OK`.
-   - Verified that `wp_body_open()`, skiplink, masthead, main content container, and footer render cleanly.
-5. **Automated Theme Check Scan:**
-   - Installed and ran official `Theme Check` plugin against `hasibshah-news`.
-   - **Result: PASSED** with **0 Critical Errors (REQUIRED)** and **0 Warnings**.
+---
 
-#### Known Limitations & Remaining Items for Future Phases:
-- CSS layout, custom typography fonts, and grid system will be implemented in **Phase 2**.
-- Custom homepage editorial sections will be implemented in **Phase 4**.
-- Single article layout and related news queries will be implemented in **Phase 5**.
-- Block patterns and Elementor testing suite will be executed in **Phase 7**.
+### Entry 004 - Phase 1 Static Review Adjustments & Final Verification
+**Date:** November 4, 2026  
+**Status:** Completed (Awaiting User Final Approval for Phase 1)
+
+#### Adjustments Made from User Static Review:
+1. **`wp_link_pages()` Removed from Archive Excerpt Loop:**
+   - Inspected `index.php`. Confirmed that `wp_link_pages()` was inappropriately located immediately after `the_excerpt()`.
+   - In an archive card loop, `the_excerpt()` outputs a plain summary and never renders the `<!--nextpage-->` quicktag.
+   - Removed `wp_link_pages()` from `index.php` to preserve clean, semantic template code. Documented that `wp_link_pages()` belongs in full-content templates (`single.php` / `page.php`), which will be introduced in **Phase 5**.
+2. **Documented Theme URI and Author URI Placeholders:**
+   - Added clear developer documentation comments in both `style.css` and `readme.txt` noting that `https://example.com/hasibshah-news` and `https://example.com` are development placeholders that must be updated with live URLs prior to production deployment or directory submission.
+3. **Confirmed `Requires PHP: 8.1` Architectural Decision:**
+   - Verified that `Requires PHP: 8.1` is an intentional architectural requirement aligned with modern PHP standards and our local runtime (PHP 8.4.27).
+   - Noted the hosting implications: servers on legacy EOL PHP versions (7.4, 8.0) cannot activate the theme, while users on supported PHP (8.1+) benefit from modern typing, security patches, and performance optimizations.
+4. **Re-executed Official Theme Check Scan:**
+   - Ran `run_themechecks_against_theme()` via `studio wp eval-file`.
+   - **Exact Scan Results Recorded:**
+     - **Critical Errors (REQUIRED): 1**
+       - `[REQUIRED] REQUIRED: Could not find wp_link_pages. See: wp_link_pages <?php wp_link_pages( $args ); ?>` (Expected milestone limitation: will be satisfied when `single.php` is built in Phase 5).
+     - **Warnings (WARNING): 0**
+     - **Info / Recommendations: 17** (Standard guidance on block patterns, CSS classes, sidebars, and comments templates to be addressed in respective subsequent phases).
+5. **Runtime & Debug Log Verification:**
+   - Checked `wp-content/debug.log`: Exactly 0 PHP warnings, 0 notices, and 0 fatal errors generated by the theme.
+   - Verified front-end HTTP request: `HTTP 200 OK`.
 
 #### Next Milestone (Phase 2):
-- **Phase 2: Design System, Typography & Layout Engine** (Self-hosted Bangla/English WOFF2 web fonts, base CSS custom properties, fluid typography clamp scale, headline overflow guards, and responsive 12-column layout grid).
+- **Phase 2: Design System, Typography & Layout Engine** (Self-hosted WOFF2 fonts, base CSS custom properties, fluid typography clamp scale, headline overflow guards, and responsive 12-column newspaper grid).

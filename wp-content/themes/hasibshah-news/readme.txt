@@ -49,3 +49,5 @@ No. HasibShah News does not load external Google Fonts or third-party tracking s
 
 HasibShah News WordPress Theme, (C) 2026 HasibShah Team.
 HasibShah News is distributed under the terms of the GNU General Public License v2 or later.
+
+Note: Theme URI and Author URI are development placeholders (example.com) that will be updated with live project links upon production release.
