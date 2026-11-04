@@ -1,0 +1,35 @@
+# WordPress Core
+/wp-admin/
+/wp-includes/
+/wp-*.php
+/xmlrpc.php
+/license.txt
+/readme.html
+wp-config.php
+index.php
+
+# WordPress Content defaults
+/wp-content/plugins/
+/wp-content/uploads/
+/wp-content/upgrade/
+/wp-content/languages/
+/wp-content/database/
+/wp-content/db.php
+/wp-content/mu-plugins/
+/wp-content/index.php
+/wp-content/themes/index.php
+/wp-content/themes/twentytwentyfive/
+/wp-content/themes/twentytwentyfour/
+/wp-content/themes/twentytwentythree/
+/wp-content/debug.log
+
+# Studio & Agent tooling
+.agents/
+.claude/
+
+# OS & Editor files
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

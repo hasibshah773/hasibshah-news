@@ -1,0 +1,75 @@
+/*
+Theme Name: HasibShah News
+Theme URI: https://example.com/hasibshah-news
+Author: HasibShah Team
+Author URI: https://example.com
+Description: HasibShah News is a modern, high-performance, and responsive WordPress theme designed specifically for Bangladeshi news portals, magazines, and digital publications. Features bilingual Bangla and English editorial typography, Gutenberg block styling via theme.json, and optional Elementor compatibility.
+Version: 1.0.0
+Requires at least: 6.6
+Tested up to: 7.1
+Requires PHP: 8.1
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hasibshah-news
+Tags: news, blog, newspaper, entertainment, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, wide-blocks
+
+HasibShah News WordPress Theme, (C) 2026 HasibShah Team
+HasibShah News is distributed under the terms of the GNU GPL.
+*/
+
+/* ==========================================================================
+   Phase 1 Baseline Scaffold Styles
+   (Full design tokens and layout engine will be implemented in Phase 2)
+   ========================================================================== */
+
+/* Accessible skip-link */
+.skip-link {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+	z-index: 100000;
+	padding: 0.75rem 1.25rem;
+	background-color: #0a192f;
+	color: #ffffff;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.skip-link:focus {
+	top: 1rem;
+	left: 1rem;
+}
+
+/* Screen reader text utility */
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
