@@ -104,4 +104,58 @@
 *Note: The theme is currently in Phase 1 (Scaffolding). Full WordPress.org submission compliance is targeted for Phase 9 after all templates, styles, and patterns are developed.*
 
 #### Next Milestone (Phase 2):
-- **Phase 2: Design System, Typography & Layout Engine** (Self-hosted WOFF2 fonts, base CSS custom properties, fluid typography clamp scale, headline overflow guards, and responsive 12-column layout grid).
+- **Phase 2: Design System, Typography & Layout Engine** (Completed in Entry 005).
+
+---
+
+### Entry 005 - Phase 2 Complete: Design System, Typography & Layout Engine
+**Date:** November 4, 2026  
+**Status:** Completed (Awaiting User Review & Approval for Phase 3)
+
+#### Actions Completed:
+1. **Self-Hosted Font Engine:**
+   - Bundled 5 Open Font License (OFL) WOFF2 web fonts in `assets/fonts/`: Hind Siliguri (Regular 400, SemiBold 600, Bold 700) and Inter (Regular 400, Bold 700). Total font payload < 270KB. 100% self-hosted, eliminating external Google Fonts requests for GDPR/WP.org privacy compliance.
+2. **Design Tokens & Base CSS (`assets/css/base.css`):**
+   - `@font-face` declarations with `font-display: swap` and Bengali unicode-ranges.
+   - Comprehensive CSS custom properties (`:root` tokens) for brand primaries, category colors, paper neutrals, spacing scale (4px/8px), and clamp-based fluid typography.
+   - Elementor-safe baseline resets with zero disruptive `!important` flags.
+   - Bangla headline overflow protection: normalized heading line-height (`1.48`), `overflow-wrap: break-word`, `word-break: break-word`, `text-wrap: balance`, and multiline line-clamping utilities (`.line-clamp-1` to `.line-clamp-4`).
+   - WordPress core utility and alignment classes: `.alignleft`, `.alignright`, `.aligncenter`, `.alignwide`, `.alignfull`, `.wp-caption`, `.wp-caption-text`, `.gallery-caption`, `.sticky`, `.bypostauthor`.
+3. **Responsive 12-Column Newspaper Layout Engine (`assets/css/layout.css`):**
+   - Semantic containers: `.site-container` (1280px max-width, 16px padding), `.site-container-narrow` (840px), `.site-container-fluid`.
+   - Mobile-first 12-column CSS Grid (`.news-grid-12`, `.col-span-1` through `.col-span-12`).
+   - Editorial broadsheet layouts: `.layout-content-sidebar` (8:4 split), `.layout-hero-3col` (3:6:3 split), `.layout-grid-3col`, `.layout-grid-4col`.
+   - Broadsheet divider borders: `.newspaper-border-bottom`, `.newspaper-border-top`, `.newspaper-double-border`, `.border-right-divider`.
+4. **Asset Enqueueing Pipeline (`inc/core/assets.php`):**
+   - Chained dependency order: `hasibshah-news-base` -> `hasibshah-news-layout` -> `hasibshah-news-style`.
+5. **Gutenberg & Theme.json Sync:**
+   - Updated `theme.json` (v3) to declare `fontFamilies` for Bangla, English, and Editorial Serif.
+   - Updated `assets/css/editor-style.css` to import `base.css` and style `.editor-styles-wrapper`.
+
+#### Verification & Test Results:
+
+##### A. Runtime Verification:
+- **Stylesheet Loading (HTTP 200 OK):**
+  - `base.css`: HTTP 200 OK (9,334 bytes).
+  - `layout.css`: HTTP 200 OK (4,648 bytes).
+  - `style.css`: HTTP 200 OK (2,015 bytes).
+- **Web Fonts Loading (HTTP 200 OK):**
+  - `hind-siliguri-regular.woff2` (71 KB), `hind-siliguri-semibold.woff2` (74 KB), `hind-siliguri-bold.woff2` (72 KB), `inter-regular.woff2` (23 KB), `inter-bold.woff2` (24 KB) all load with HTTP 200.
+- **PHP Debug Log:** Checked `wp-content/debug.log`: exactly 0 errors, 0 warnings, 0 notices under active PHP 8.3.36 runtime.
+
+##### B. Visual & Responsive Viewport Audit:
+- **Mobile (< 768px):** Containers constrain to 100% width with 1rem padding; all grid layouts stack cleanly in 1 column; 0 horizontal scrolling.
+- **Tablet (768px - 1023px):** 12-column grid active; hero lead spans full width; 2-column card wrapping.
+- **Desktop (1024px+):** Full 12-column newspaper grid; 8:4 content-sidebar and 3:6:3 hero split render without overflow.
+- **Bangla Font Rendering:** Tested with live published Bangla post containing complex conjuncts and diacritics. No matra/hasant clipping detected.
+
+##### C. Theme Check Plugin Audit (Version: 20260901):
+- **Overall Scan Status:** `FAILED / NEEDS ATTENTION` (Expected milestone limitation)
+- **Deferred Critical Findings (REQUIRED): 1**
+  - `[REQUIRED] REQUIRED: Could not find wp_link_pages. See: wp_link_pages <?php wp_link_pages( $args ); ?>`  
+    *Deferred Reason:* Belongs in `single.php` / `page.php` with `the_content()`. Scheduled for **Phase 5**.
+- **Warnings (WARNING): 0**
+- **Recommendations / Deferred Info (INFO): 11** (Reduced from 17 in Phase 1; all CSS alignment, caption, and sticky class recommendations were resolved). Remaining 11 items belong to future phases (block patterns in Phase 7, single comments in Phase 5, sidebars in Phase 6).
+
+#### Next Milestone (Phase 3):
+- **Phase 3: Header, Navigation & Breaking News Ticker** (Semantic `<header>`, topbar with dynamic Bengali date, newspaper masthead with custom logo, accessible keyboard navigation menu, responsive mobile drawer, and accessible breaking news ticker).

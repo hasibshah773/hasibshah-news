@@ -15,11 +15,27 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 	 * Enqueue theme scripts and styles.
 	 */
 	function hasibshah_news_scripts() {
-		// Enqueue the primary theme stylesheet.
+		// 1. Base styles, font definitions, and design tokens.
+		wp_enqueue_style(
+			'hasibshah-news-base',
+			HASIBSHAH_NEWS_URI . '/assets/css/base.css',
+			array(),
+			HASIBSHAH_NEWS_VERSION
+		);
+
+		// 2. Responsive layout engine and newspaper grid.
+		wp_enqueue_style(
+			'hasibshah-news-layout',
+			HASIBSHAH_NEWS_URI . '/assets/css/layout.css',
+			array( 'hasibshah-news-base' ),
+			HASIBSHAH_NEWS_VERSION
+		);
+
+		// 3. Primary theme stylesheet.
 		wp_enqueue_style(
 			'hasibshah-news-style',
 			get_stylesheet_uri(),
-			array(),
+			array( 'hasibshah-news-layout' ),
 			HASIBSHAH_NEWS_VERSION
 		);
 

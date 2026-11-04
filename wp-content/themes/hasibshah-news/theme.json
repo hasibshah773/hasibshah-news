@@ -68,6 +68,23 @@
 		},
 		"typography": {
 			"fluid": true,
+			"fontFamilies": [
+				{
+					"fontFamily": "'Hind Siliguri', 'SolaimanLipi', 'Kalpurush', sans-serif",
+					"slug": "bangla",
+					"name": "Bangla (Hind Siliguri)"
+				},
+				{
+					"fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+					"slug": "english",
+					"name": "English (Inter)"
+				},
+				{
+					"fontFamily": "Georgia, 'Times New Roman', serif",
+					"slug": "serif",
+					"name": "Editorial Serif"
+				}
+			],
 			"fontSizes": [
 				{
 					"slug": "small",
