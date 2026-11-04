@@ -46,3 +46,4 @@ if ( ! function_exists( 'hasibshah_news_posted_by' ) ) :
 		echo '<span class="byline"> ' . $byline . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	}
 endif;
+

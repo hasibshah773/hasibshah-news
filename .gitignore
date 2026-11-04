@@ -5,8 +5,8 @@
 /xmlrpc.php
 /license.txt
 /readme.html
-wp-config.php
-index.php
+/wp-config.php
+/index.php
 
 # WordPress Content defaults
 /wp-content/plugins/

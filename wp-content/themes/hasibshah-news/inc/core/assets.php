@@ -30,3 +30,4 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 	}
 endif;
 add_action( 'wp_enqueue_scripts', 'hasibshah_news_scripts' );
+

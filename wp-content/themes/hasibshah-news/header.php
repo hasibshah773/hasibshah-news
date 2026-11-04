@@ -70,3 +70,4 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php do_action( 'hasibshah_news_after_header' ); ?>
 
 	<div id="content" class="site-content">
+
