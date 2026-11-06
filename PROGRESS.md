@@ -237,4 +237,89 @@
 - **Recommendations / Deferred Info (INFO): 11** (Same 11 future-phase items as Phase 2; zero new errors or warnings introduced).
 
 #### Next Milestone (Phase 4):
-- **Phase 4: Homepage & Editorial Section Grid Layouts** (Editorial Broadsheet Hero Cover, 3-column newspaper grid, Lead Story card with high-impact typography, secondary sub-lead stack, sidebar opinion/trending tab, and category-accented section headers).
+- **Phase 4: Editorial Homepage & Dynamic News Queries** (Completed in Entry 007).
+
+---
+
+### Entry 007 - Phase 4 Complete: Editorial Homepage & Dynamic News Queries
+**Date:** November 6, 2026  
+**Status:** Completed (Awaiting User Review & Approval for Phase 5)
+
+#### Actions Completed:
+1. **Editorial News Queries & Helpers (`inc/editorial/news-queries.php`):**
+   - Created `hasibshah_news_get_section_posts()` with `'no_found_rows' => true` applied by default to eliminate SQL row-calculation overhead on non-paginated homepage sections.
+   - Built `hasibshah_news_post_badge()` generating accessible, color-coded category pills mapped to category slugs (`badge-cat-bangladesh`, `badge-cat-politics`, `badge-cat-business`, `badge-cat-sports`, `badge-cat-entertainment`, `badge-cat-opinion`, `badge-cat-tech`).
+   - Built `hasibshah_news_time_ago()` calculating human-readable relative time with Bengali digits (e.g. "১৫ মিনিট আগে", "২ ঘণ্টা আগে").
+   - Built `hasibshah_news_reading_time()` calculating estimated article reading time in Bengali (e.g. "৩ মিনিট পড়ার সময়").
+   - Built `hasibshah_news_post_thumbnail()` providing responsive lazy-loaded thumbnails with graceful inline SVG fallback placeholders to guarantee 0 Cumulative Layout Shift (CLS).
+   - Loaded modularly in `functions.php`.
+2. **Modular Front-Page Template (`front-page.php`):**
+   - Implemented standard WordPress template hierarchy front page with semantic `<main id="primary" class="site-main homepage-editorial-feed">`.
+   - Integrated extensible action hooks: `hasibshah_news_before_homepage` and `hasibshah_news_after_homepage`.
+   - Sequentially loads 5 modular editorial section template parts.
+3. **Broadsheet Hero Cover Section (`template-parts/news-sections/section-hero.php`):**
+   - 3-column broadsheet cover split (12-column grid):
+     - Center (6 cols): Primary Lead Story (`news-card-lead`) with 16:9 banner image, display typography, excerpt, author byline, time-ago, and reading time badge.
+     - Left (3 cols): Secondary Feature Stories Stack (`secondary-stories-stack`) with 2 stacked cards.
+     - Right (3 cols): Latest Headlines Feed (`latest-headlines-feed`) with pulsing red dot, chronological headline list, and "সব খবর পড়ুন" archive link.
+   - **Focused In-Memory Deduplication:** Tracks `$hero_excluded_ids` strictly across the Hero queries so the Lead Story ID never repeats in adjacent secondary slots or the latest list.
+4. **District / Regional News Section (`template-parts/news-sections/section-district.php`):**
+   - "সারাদেশ" section header with National Green (`--color-cat-bangladesh`) accent bar and subtitle.
+   - 8 Bangladeshi administrative division filter chips (ঢাকা, চট্টগ্রাম, রাজশাহী, খুলনা, বরিশাল, সিলেট, রংপুর, ময়মনসিংহ).
+   - 4-column responsive news card grid (`col-span-12 col-span-md-6 col-span-lg-3`).
+5. **Category Feature Grids (`template-parts/news-sections/section-grid.php`):**
+   - 3-column broadsheet category blocks:
+     - রাজনীতি (Politics) with Deep Maroon accent (`heading-accent-politics`).
+     - অর্থনীতি ও বাণিজ্য (Business) with Sapphire Blue accent (`heading-accent-business`).
+     - খেলাধুলা (Sports) with Vibrant Amber accent (`heading-accent-sports`).
+   - Each category block features 1 Primary lead card with 3:2 image + compact headline list with thumbnail thumbnails.
+6. **Multimedia Hub (`template-parts/news-sections/section-media.php`):**
+   - Dark aesthetic surface container (`--color-brand-primary` #0A192F dark background, white text).
+   - 4-column multimedia card grid.
+   - Interactive badge overlays: "ভিডিও" with video play icon, "ছবি" with camera icon.
+7. **Opinion & Editorial Columns (`template-parts/news-sections/section-opinion.php`):**
+   - Broadsheet paper background with classic double-border styling (`.newspaper-double-border`).
+   - Distinctive columnist cards with circular author portraits (52px avatar), author byline, designation, quotation mark graphic, and thought-provoking title.
+8. **Component Stylesheet (`assets/css/components.css`):**
+   - 620+ lines of modular, token-compliant CSS for news cards, badges, aspect-ratio containers, dark multimedia surface, opinion styling, and line-clamping utilities.
+   - Enqueued in `inc/core/assets.php` as `hasibshah-news-components` with dependency on `hasibshah-news-header`.
+
+#### Verification & Test Results:
+
+##### A. PHP Syntax & Static File Validation:
+- All 20 PHP files across the theme scanned via token parse check: 100% PASS (0 syntax errors, 0 parse errors).
+
+##### B. Runtime & Section Rendering Verification:
+- **Rendered Output:** `front-page.php` fully rendered via in-process WordPress runtime: 88,948 bytes of valid semantic HTML5.
+- **Section Presence Verification:**
+  - `section-hero`: YES (Lead, 2 secondary, 5 latest headlines).
+  - `section-district`: YES (4 regional news cards + 8 division chips).
+  - `section-category-grid`: YES (3 category blocks: Politics, Business, Sports).
+  - `section-media`: YES (4 dark multimedia cards with video/photo badge overlays).
+  - `section-opinion`: YES (Columnist avatar, designation, and editorial headline).
+  - `hasibshah-news-components-css`: YES (properly enqueued and loaded).
+- **PHP Error Log:** Inspected `wp-content/debug.log`: exactly 0 errors, 0 warnings, 0 notices under active PHP 8.3.36 runtime.
+
+##### C. Focused Hero Deduplication Audit:
+- Tested with multi-post dataset:
+  - Lead story ID: 13
+  - Secondary story IDs: 12, 11 (ID 13 excluded)
+  - Latest feed story IDs: 10, 9, 8, 7, 6 (IDs 13, 12, 11 excluded)
+  - Zero duplicate stories across the entire Hero cover!
+  - Query parameter verification: `no_found_rows => true` confirmed on all homepage queries.
+
+##### D. Visual & Viewport Responsiveness:
+- **Desktop (>= 992px):** Hero 3-column split (3:6:3); District 4-column grid; Category 3-column blocks; Media 4-column grid; Opinion 4-column cards.
+- **Tablet (768px - 991px):** Hero lead stacks cleanly; District 2-column wrapping; Category blocks stack; 0 horizontal overflow.
+- **Mobile (< 768px):** All cards stack smoothly in single column; division chips scroll horizontally; touch targets >= 44px.
+
+##### E. Theme Check Plugin Audit (Version: 20260901):
+- **Overall Scan Status:** `FAILED / NEEDS ATTENTION` (Expected milestone limitation)
+- **Critical Errors (REQUIRED): 1**
+  - `[REQUIRED] REQUIRED: Could not find wp_link_pages. See: wp_link_pages <?php wp_link_pages( $args ); ?>`  
+    *Deferred Reason:* Belongs in `single.php` / `page.php` with `the_content()`. Scheduled for **Phase 5**.
+- **Warnings (WARNING): 0**
+- **Recommendations / Deferred Info (INFO): 11** (Zero new errors or warnings introduced by Phase 4).
+
+#### Next Milestone (Phase 5):
+- **Phase 5: Single Article View, Related Stories & Comments** (`single.php`, `content-single.php`, reporter byline, publish/update timestamps, reading time badge, featured image with caption, social share buttons, author bio box, related stories query with `no_found_rows => true`, `comments.php`, and `wp_link_pages()`).

@@ -1,0 +1,763 @@
+/**
+ * HasibShah News - Component Stylesheet
+ *
+ * Implements editorial broadsheet news cards, section headers,
+ * category badges, hero cover layout, district chips, multimedia cards,
+ * and opinion columnist styling.
+ *
+ * @package HasibShah_News
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   1. Section Layout & Editorial Headers
+   ========================================================================== */
+
+.editorial-section {
+	padding: var(--space-8) 0;
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.section-heading-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	margin-bottom: var(--space-6);
+	padding-bottom: var(--space-3);
+	border-bottom: 2px solid var(--color-border-subtle);
+	position: relative;
+}
+
+.heading-title-wrap {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	position: relative;
+}
+
+.heading-accent-bar {
+	width: 5px;
+	height: 24px;
+	border-radius: 2px;
+	background-color: var(--color-brand-primary);
+	flex-shrink: 0;
+}
+
+.heading-accent-bangladesh .heading-accent-bar {
+	background-color: var(--color-cat-bangladesh);
+}
+
+.heading-accent-politics .heading-accent-bar {
+	background-color: var(--color-cat-politics);
+}
+
+.heading-accent-business .heading-accent-bar {
+	background-color: var(--color-cat-business);
+}
+
+.heading-accent-sports .heading-accent-bar {
+	background-color: var(--color-cat-sports);
+}
+
+.heading-accent-opinion .heading-accent-bar {
+	background-color: var(--color-cat-opinion);
+}
+
+.heading-accent-media .heading-accent-bar {
+	background-color: var(--color-brand-accent);
+}
+
+.section-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-xl);
+	font-weight: 700;
+	line-height: var(--line-height-heading);
+	margin: 0;
+	color: var(--color-text-main);
+	letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+	padding-left: var(--space-2);
+	border-left: 1px solid var(--color-border-medium);
+	line-height: 1.2;
+}
+
+.heading-more-link .category-view-all,
+.heading-more-link a {
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	color: var(--color-brand-accent);
+	transition: color var(--transition-fast);
+}
+
+.heading-more-link a:hover {
+	color: var(--color-brand-accent-hover);
+}
+
+/* ==========================================================================
+   2. Category Badges
+   ========================================================================== */
+
+.news-category-badge {
+	display: inline-block;
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	padding: 0.15rem 0.55rem;
+	border-radius: 3px;
+	color: var(--color-text-inverse);
+	background-color: var(--color-brand-primary);
+	line-height: 1.4;
+	letter-spacing: 0.02em;
+	transition: opacity var(--transition-fast);
+}
+
+.news-category-badge:hover {
+	opacity: 0.9;
+	color: var(--color-text-inverse);
+}
+
+.badge-cat-default       { background-color: var(--color-brand-primary); }
+.badge-cat-bangladesh    { background-color: var(--color-cat-bangladesh); }
+.badge-cat-politics      { background-color: var(--color-cat-politics); }
+.badge-cat-business      { background-color: var(--color-cat-business); }
+.badge-cat-sports        { background-color: var(--color-cat-sports); }
+.badge-cat-entertainment { background-color: var(--color-cat-entertainment); }
+.badge-cat-opinion       { background-color: var(--color-cat-opinion); }
+.badge-cat-tech          { background-color: var(--color-cat-tech); }
+
+/* ==========================================================================
+   3. Universal News Card Foundation
+   ========================================================================== */
+
+.news-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	transition: transform var(--transition-fast);
+}
+
+.card-media {
+	position: relative;
+	overflow: hidden;
+	border-radius: 4px;
+	background-color: var(--color-bg-surface-alt);
+}
+
+.card-thumb-link {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.news-card-img {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	transition: transform var(--transition-normal);
+}
+
+.news-card:hover .news-card-img {
+	transform: scale(1.03);
+}
+
+.card-badge-wrap {
+	position: absolute;
+	top: var(--space-3);
+	left: var(--space-3);
+	z-index: 2;
+}
+
+.card-body {
+	padding: var(--space-3) 0 0;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.card-title {
+	font-family: var(--font-bangla);
+	font-weight: 700;
+	line-height: var(--line-height-heading);
+	margin: 0 0 var(--space-2);
+	color: var(--color-text-main);
+	transition: color var(--transition-fast);
+}
+
+.card-title a {
+	color: inherit;
+	transition: color var(--transition-fast);
+}
+
+.card-title a:hover {
+	color: var(--color-brand-accent);
+}
+
+.card-meta {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin-top: auto;
+}
+
+.card-meta svg {
+	vertical-align: -1px;
+	margin-right: 2px;
+	color: var(--color-text-light);
+}
+
+.meta-separator {
+	color: var(--color-border-medium);
+}
+
+/* ==========================================================================
+   4. Hero Section: Broadsheet Cover
+   ========================================================================== */
+
+.section-hero {
+	padding-top: var(--space-6);
+	background-color: var(--color-bg-body);
+}
+
+.hero-cover-grid {
+	align-items: stretch;
+}
+
+/* Left: Secondary Stories Stack */
+.secondary-stories-stack {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-5);
+	height: 100%;
+}
+
+.news-card-secondary {
+	padding-bottom: var(--space-4);
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.news-card-secondary:last-child {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.news-card-secondary .card-title {
+	font-size: var(--font-size-md);
+}
+
+/* Center: Primary Lead Story */
+.hero-lead-col {
+	border-left: 1px solid var(--color-border-subtle);
+	border-right: 1px solid var(--color-border-subtle);
+	padding: 0 var(--space-4);
+}
+
+@media (max-width: 991px) {
+	.hero-lead-col {
+		border-left: none;
+		border-right: none;
+		padding: var(--space-4) 0;
+		border-top: 1px solid var(--color-border-subtle);
+		border-bottom: 1px solid var(--color-border-subtle);
+	}
+}
+
+.news-card-lead .lead-media {
+	aspect-ratio: 16 / 9;
+}
+
+.news-card-lead .lead-body {
+	padding: var(--space-4) 0 0;
+}
+
+.lead-headline {
+	font-family: var(--font-bangla);
+	font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.35rem);
+	font-weight: 700;
+	line-height: 1.35;
+	margin: 0 0 var(--space-3);
+	color: var(--color-text-main);
+	letter-spacing: -0.015em;
+}
+
+.lead-headline a {
+	color: inherit;
+	transition: color var(--transition-fast);
+}
+
+.lead-headline a:hover {
+	color: var(--color-brand-accent);
+}
+
+.lead-excerpt p {
+	font-size: 1.05rem;
+	line-height: var(--line-height-body);
+	color: var(--color-text-muted);
+	margin: 0 0 var(--space-4);
+}
+
+.lead-meta {
+	font-size: var(--font-size-sm);
+	padding-top: var(--space-2);
+	border-top: 1px solid var(--color-border-subtle);
+}
+
+/* Right: Latest Headlines Feed */
+.latest-headlines-feed {
+	background-color: var(--color-bg-surface);
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 6px;
+	padding: var(--space-4);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.feed-header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding-bottom: var(--space-3);
+	margin-bottom: var(--space-2);
+	border-bottom: 2px solid var(--color-brand-accent);
+}
+
+.feed-pulse-dot {
+	width: 8px;
+	height: 8px;
+	background-color: var(--color-brand-accent);
+	border-radius: 50%;
+	display: inline-block;
+	animation: pulseFeedDot 1.5s infinite;
+}
+
+@keyframes pulseFeedDot {
+	0%   { transform: scale(0.9); opacity: 0.6; }
+	50%  { transform: scale(1.3); opacity: 1; }
+	100% { transform: scale(0.9); opacity: 0.6; }
+}
+
+.feed-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-md);
+	font-weight: 700;
+	margin: 0;
+	color: var(--color-text-main);
+}
+
+.latest-feed-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-3);
+	flex-grow: 1;
+}
+
+.latest-feed-item {
+	padding: var(--space-2) 0;
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.latest-feed-item:last-child {
+	border-bottom: none;
+}
+
+.feed-item-time {
+	font-size: var(--font-size-xs);
+	color: var(--color-brand-accent);
+	font-weight: 600;
+	margin-bottom: var(--space-1);
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.feed-item-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	line-height: 1.45;
+	margin: 0;
+}
+
+.feed-item-title a {
+	color: var(--color-text-main);
+	transition: color var(--transition-fast);
+}
+
+.feed-item-title a:hover {
+	color: var(--color-brand-accent);
+}
+
+.feed-footer {
+	padding-top: var(--space-3);
+	border-top: 1px solid var(--color-border-subtle);
+	text-align: right;
+}
+
+.feed-more-link {
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	color: var(--color-brand-accent);
+	transition: color var(--transition-fast);
+}
+
+.feed-more-link:hover {
+	color: var(--color-brand-accent-hover);
+}
+
+/* ==========================================================================
+   5. District Section: সারাদেশ
+   ========================================================================== */
+
+.district-chips-wrapper {
+	overflow-x: auto;
+	max-width: 100%;
+	padding-bottom: var(--space-1);
+}
+
+.district-chips-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.district-chip-link {
+	display: inline-block;
+	font-size: var(--font-size-xs);
+	font-weight: 600;
+	padding: 0.2rem 0.65rem;
+	border: 1px solid var(--color-border-medium);
+	border-radius: 20px;
+	color: var(--color-text-muted);
+	background-color: var(--color-bg-surface);
+	transition: all var(--transition-fast);
+	white-space: nowrap;
+}
+
+.district-chip-link:hover {
+	color: var(--color-text-inverse);
+	background-color: var(--color-cat-bangladesh);
+	border-color: var(--color-cat-bangladesh);
+}
+
+.news-card-grid .card-media {
+	aspect-ratio: 3 / 2;
+}
+
+.news-card-grid .card-title {
+	font-size: var(--font-size-md);
+}
+
+/* ==========================================================================
+   6. Category Feature Grids: রাজনীতি, অর্থনীতি ও খেলাধুলা
+   ========================================================================== */
+
+.category-block-col {
+	display: flex;
+	flex-direction: column;
+}
+
+.category-block-content {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-4);
+}
+
+.news-card-cat-lead .card-media {
+	aspect-ratio: 3 / 2;
+}
+
+.news-card-cat-lead .card-title {
+	font-size: var(--font-size-md);
+}
+
+.cat-compact-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+.cat-compact-item {
+	display: flex;
+	gap: var(--space-3);
+	padding: var(--space-3) 0;
+	border-bottom: 1px solid var(--color-border-subtle);
+	align-items: center;
+}
+
+.cat-compact-item:last-child {
+	border-bottom: none;
+}
+
+.compact-thumb-link {
+	flex: 0 0 84px;
+	height: 60px;
+	border-radius: 4px;
+	overflow: hidden;
+	background-color: var(--color-bg-surface-alt);
+}
+
+.compact-thumb-img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.compact-body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.compact-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	line-height: 1.45;
+	margin: 0 0 var(--space-1);
+}
+
+.compact-title a {
+	color: var(--color-text-main);
+	transition: color var(--transition-fast);
+}
+
+.compact-title a:hover {
+	color: var(--color-brand-accent);
+}
+
+.compact-time {
+	font-size: 0.75rem;
+	color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   7. Multimedia Hub (Dark Surface)
+   ========================================================================== */
+
+.dark-theme-surface {
+	background-color: var(--color-brand-primary);
+	color: var(--color-text-inverse);
+	border-bottom: none;
+}
+
+.dark-theme-surface .section-heading-bar {
+	border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.media-header-icon {
+	color: var(--color-brand-accent);
+	display: inline-flex;
+}
+
+.media-frame {
+	aspect-ratio: 16 / 9;
+}
+
+.media-overlay-badge {
+	position: absolute;
+	bottom: var(--space-2);
+	left: var(--space-2);
+	z-index: 2;
+}
+
+.media-type-pill {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-1);
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	padding: 0.2rem 0.55rem;
+	border-radius: 16px;
+	color: var(--color-text-inverse);
+	backdrop-filter: blur(4px);
+}
+
+.pill-video {
+	background-color: rgba(201, 0, 0, 0.9);
+}
+
+.pill-photo {
+	background-color: rgba(10, 25, 47, 0.85);
+	border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.news-card-media .card-title {
+	font-size: var(--font-size-md);
+}
+
+.text-inverse {
+	color: var(--color-text-inverse) !important;
+}
+
+.text-inverse-muted {
+	color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ==========================================================================
+   8. Opinion & Editorial Columns
+   ========================================================================== */
+
+.section-opinion {
+	background-color: var(--color-bg-surface);
+}
+
+.opinion-header-icon {
+	color: var(--color-cat-opinion);
+	display: inline-flex;
+}
+
+.news-card-opinion {
+	background-color: var(--color-bg-body);
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 6px;
+	padding: var(--space-4);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+	transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.news-card-opinion:hover {
+	box-shadow: var(--shadow-hover);
+	transform: translateY(-2px);
+}
+
+.opinion-card-header {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin-bottom: var(--space-3);
+}
+
+.author-avatar-wrap {
+	flex-shrink: 0;
+}
+
+.opinion-author-avatar {
+	width: 52px;
+	height: 52px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--color-border-subtle);
+}
+
+.author-info {
+	min-width: 0;
+}
+
+.author-name {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-sm);
+	font-weight: 700;
+	margin: 0;
+	color: var(--color-text-main);
+}
+
+.author-name a {
+	color: inherit;
+	transition: color var(--transition-fast);
+}
+
+.author-name a:hover {
+	color: var(--color-brand-accent);
+}
+
+.author-designation {
+	font-size: 0.75rem;
+	color: var(--color-text-muted);
+}
+
+.opinion-card-body {
+	position: relative;
+	margin-bottom: var(--space-4);
+	flex-grow: 1;
+}
+
+.opinion-quote-mark {
+	font-family: Georgia, serif;
+	font-size: 2.2rem;
+	line-height: 1;
+	color: var(--color-brand-accent);
+	opacity: 0.3;
+	margin-bottom: -10px;
+}
+
+.opinion-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-md);
+	font-weight: 600;
+	line-height: 1.5;
+	margin: 0;
+}
+
+.opinion-title a {
+	color: var(--color-text-main);
+	transition: color var(--transition-fast);
+}
+
+.opinion-title a:hover {
+	color: var(--color-brand-accent);
+}
+
+.opinion-card-footer {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding-top: var(--space-2);
+	border-top: 1px solid var(--color-border-subtle);
+}
+
+/* ==========================================================================
+   9. Placeholders & Responsive Aspect Ratios
+   ========================================================================== */
+
+.news-thumbnail-placeholder {
+	width: 100%;
+	background-color: var(--color-bg-surface-alt);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-border-medium);
+	border-radius: 4px;
+}
+
+.aspect-16-9 {
+	aspect-ratio: 16 / 9;
+}
+
+.aspect-3-2 {
+	aspect-ratio: 3 / 2;
+}
+
+.aspect-1-1 {
+	aspect-ratio: 1 / 1;
+}
+
+.card-placeholder {
+	padding: var(--space-6);
+	background-color: var(--color-bg-surface);
+	border: 1px dashed var(--color-border-medium);
+	border-radius: 6px;
+	text-align: center;
+	color: var(--color-text-muted);
+}
+

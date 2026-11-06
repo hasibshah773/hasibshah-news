@@ -36,4 +36,5 @@ require_once HASIBSHAH_NEWS_DIR . '/inc/core/setup.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/core/assets.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/core/template-tags.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/editorial/bangla-date.php';
+require_once HASIBSHAH_NEWS_DIR . '/inc/editorial/news-queries.php';
 

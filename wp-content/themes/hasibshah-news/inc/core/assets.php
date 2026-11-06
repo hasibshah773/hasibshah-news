@@ -39,15 +39,23 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 			HASIBSHAH_NEWS_VERSION
 		);
 
-		// 4. Primary theme stylesheet.
+		// 4. Reusable editorial news components, cards, and section layouts.
 		wp_enqueue_style(
-			'hasibshah-news-style',
-			get_stylesheet_uri(),
+			'hasibshah-news-components',
+			HASIBSHAH_NEWS_URI . '/assets/css/components.css',
 			array( 'hasibshah-news-header' ),
 			HASIBSHAH_NEWS_VERSION
 		);
 
-		// 5. Navigation, mobile drawer, and interactive controls script.
+		// 5. Primary theme stylesheet.
+		wp_enqueue_style(
+			'hasibshah-news-style',
+			get_stylesheet_uri(),
+			array( 'hasibshah-news-components' ),
+			HASIBSHAH_NEWS_VERSION
+		);
+
+		// 6. Navigation, mobile drawer, and interactive controls script.
 		wp_enqueue_script(
 			'hasibshah-news-navigation',
 			HASIBSHAH_NEWS_URI . '/assets/js/navigation.js',
