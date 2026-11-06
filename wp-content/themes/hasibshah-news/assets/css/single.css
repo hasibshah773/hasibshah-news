@@ -1,0 +1,687 @@
+/**
+ * HasibShah News - Single Article & Long-Form Reading Stylesheet
+ *
+ * Implements authoritative broadsheet typography, bylines, social share,
+ * featured media presentation, drop-caps, pull quotes, post pagination,
+ * author bio box, related stories, and accessible comments.
+ *
+ * @package HasibShah_News
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   1. Article Container & Broadsheet Layout
+   ========================================================================== */
+
+.single-post-main {
+	padding: var(--space-6) 0 var(--space-12);
+	background-color: var(--color-bg-body);
+}
+
+.single-article-container {
+	max-width: 860px;
+	margin: 0 auto;
+}
+
+.single-news-article {
+	margin-bottom: var(--space-8);
+}
+
+/* ==========================================================================
+   2. Article Header & Metadata Bar
+   ========================================================================== */
+
+.article-header {
+	margin-bottom: var(--space-6);
+}
+
+.article-category-wrap {
+	margin-bottom: var(--space-3);
+}
+
+.single-article-title {
+	font-family: var(--font-bangla);
+	font-size: clamp(1.85rem, 1.3rem + 2vw, 2.75rem);
+	font-weight: 700;
+	line-height: 1.32;
+	color: var(--color-text-main);
+	margin: 0 0 var(--space-4);
+	letter-spacing: -0.015em;
+	overflow-wrap: break-word;
+	word-break: break-word;
+	text-wrap: balance;
+}
+
+.article-lead-excerpt {
+	font-size: 1.2rem;
+	line-height: 1.6;
+	color: var(--color-text-muted);
+	font-weight: 500;
+	margin-bottom: var(--space-5);
+	padding-bottom: var(--space-4);
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.article-meta-bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+	padding: var(--space-3) 0;
+	border-top: 1px solid var(--color-border-subtle);
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.meta-author-wrap {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.byline-avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 1px solid var(--color-border-medium);
+}
+
+.meta-author-text {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.3;
+}
+
+.byline-label {
+	font-size: 0.72rem;
+	color: var(--color-text-light);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.meta-author-text .author a {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-sm);
+	font-weight: 700;
+	color: var(--color-text-main);
+	transition: color var(--transition-fast);
+}
+
+.meta-author-text .author a:hover {
+	color: var(--color-brand-accent);
+}
+
+.meta-timestamps {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+}
+
+.meta-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.meta-item svg {
+	color: var(--color-text-light);
+}
+
+.meta-item .meta-label {
+	font-weight: 600;
+	color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   3. Social Share Bar (Lightweight & Cookie-Free)
+   ========================================================================== */
+
+.article-share-bar {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin-top: var(--space-4);
+	padding-top: var(--space-3);
+}
+
+.share-label {
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	color: var(--color-text-muted);
+}
+
+.share-buttons-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.share-btn {
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-text-inverse);
+	transition: transform var(--transition-fast), opacity var(--transition-fast);
+	border: none;
+	cursor: pointer;
+}
+
+.share-btn:hover {
+	transform: translateY(-2px);
+	opacity: 0.9;
+	color: var(--color-text-inverse);
+}
+
+.share-facebook { background-color: #1877F2; }
+.share-twitter  { background-color: #000000; }
+.share-whatsapp { background-color: #25D366; }
+.share-print    {
+	background-color: var(--color-bg-surface-alt);
+	color: var(--color-text-main);
+	border: 1px solid var(--color-border-medium);
+}
+.share-print:hover {
+	background-color: var(--color-bg-surface);
+	color: var(--color-brand-accent);
+}
+
+/* ==========================================================================
+   4. Featured Image & Captions
+   ========================================================================== */
+
+.article-featured-media {
+	margin: 0 0 var(--space-8);
+	border-radius: 6px;
+	overflow: hidden;
+	background-color: var(--color-bg-surface-alt);
+}
+
+.article-featured-media .featured-image {
+	width: 100%;
+	height: auto;
+	display: block;
+	object-fit: cover;
+}
+
+.featured-caption {
+	padding: var(--space-2) var(--space-3);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+	background-color: var(--color-bg-surface);
+	border-left: 3px solid var(--color-brand-accent);
+	line-height: 1.5;
+}
+
+/* ==========================================================================
+   5. Long-Form Editorial Body Typography
+   ========================================================================== */
+
+.article-body-content {
+	font-family: var(--font-bangla);
+	font-size: clamp(1.0625rem, 0.98rem + 0.4vw, 1.22rem);
+	line-height: 1.78;
+	color: var(--color-text-main);
+	letter-spacing: 0.01em;
+	overflow-wrap: break-word;
+	word-break: break-word;
+}
+
+.article-body-content p {
+	margin-bottom: 1.6em;
+}
+
+.article-body-content h2,
+.article-body-content h3,
+.article-body-content h4,
+.article-body-content h5,
+.article-body-content h6 {
+	font-family: var(--font-bangla);
+	font-weight: 700;
+	color: var(--color-text-main);
+	margin: 1.8em 0 0.7em;
+	line-height: var(--line-height-heading);
+	letter-spacing: -0.01em;
+}
+
+.article-body-content h2 { font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem); }
+.article-body-content h3 { font-size: clamp(1.2rem, 1rem + 0.8vw, 1.45rem); }
+
+.article-body-content a {
+	color: var(--color-cat-business);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	transition: color var(--transition-fast);
+}
+
+.article-body-content a:hover {
+	color: var(--color-brand-accent);
+}
+
+/* Pull quotes and blockquotes */
+.article-body-content blockquote {
+	margin: var(--space-6) 0;
+	padding: var(--space-4) var(--space-6);
+	background-color: var(--color-bg-surface);
+	border-left: 4px solid var(--color-brand-accent);
+	border-radius: 0 4px 4px 0;
+	font-style: italic;
+	font-size: 1.15rem;
+	line-height: 1.65;
+}
+
+.article-body-content blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+/* Drop-caps */
+.article-body-content .has-drop-cap:not(:focus):first-letter {
+	font-family: var(--font-bangla);
+	float: left;
+	font-size: 3.8rem;
+	line-height: 0.8;
+	margin: 0.1em 0.15em 0.05em 0;
+	font-weight: 700;
+	color: var(--color-brand-accent);
+}
+
+/* ==========================================================================
+   6. Multi-page Post Pagination (wp_link_pages)
+   ========================================================================== */
+
+.article-page-links {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: var(--space-6) 0;
+	padding: var(--space-3) var(--space-4);
+	background-color: var(--color-bg-surface);
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 4px;
+}
+
+.article-page-links .page-links-title {
+	font-weight: 700;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-main);
+	margin-right: var(--space-2);
+}
+
+.article-page-links .page-number {
+	display: inline-block;
+	padding: 0.25rem 0.65rem;
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	border-radius: 3px;
+}
+
+.article-page-links a {
+	text-decoration: none;
+}
+
+.article-page-links a .page-number {
+	background-color: var(--color-bg-body);
+	border: 1px solid var(--color-border-medium);
+	color: var(--color-text-main);
+	transition: all var(--transition-fast);
+}
+
+.article-page-links a:hover .page-number {
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+	border-color: var(--color-brand-accent);
+}
+
+.article-page-links > .page-number:not(a *) {
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+	border: 1px solid var(--color-brand-accent);
+}
+
+/* ==========================================================================
+   7. Article Tags
+   ========================================================================== */
+
+.article-tags-wrap {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+	margin: var(--space-8) 0 var(--space-6);
+	padding: var(--space-4) 0;
+	border-top: 1px solid var(--color-border-subtle);
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.tags-title {
+	font-weight: 700;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-main);
+}
+
+.article-tags-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.article-tags-list a {
+	display: inline-block;
+	font-size: var(--font-size-xs);
+	font-weight: 600;
+	padding: 0.2rem 0.65rem;
+	background-color: var(--color-bg-surface-alt);
+	color: var(--color-text-muted);
+	border-radius: 14px;
+	transition: all var(--transition-fast);
+	text-decoration: none;
+}
+
+.article-tags-list a:hover {
+	background-color: var(--color-brand-primary);
+	color: var(--color-text-inverse);
+}
+
+/* ==========================================================================
+   8. Author Bio Box
+   ========================================================================== */
+
+.article-author-bio-box {
+	display: flex;
+	gap: var(--space-4);
+	padding: var(--space-5);
+	background-color: var(--color-bg-surface);
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 6px;
+	margin: var(--space-6) 0 var(--space-8);
+}
+
+.author-bio-avatar-wrap {
+	flex-shrink: 0;
+}
+
+.author-bio-avatar {
+	width: 72px;
+	height: 72px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--color-border-medium);
+}
+
+.author-bio-content {
+	flex-grow: 1;
+}
+
+.author-bio-label {
+	font-size: 0.72rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: var(--color-brand-accent);
+	letter-spacing: 0.04em;
+	display: block;
+	margin-bottom: 2px;
+}
+
+.author-bio-name {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-md);
+	font-weight: 700;
+	margin: 0 0 var(--space-2);
+}
+
+.author-bio-name a {
+	color: var(--color-text-main);
+	transition: color var(--transition-fast);
+}
+
+.author-bio-name a:hover {
+	color: var(--color-brand-accent);
+}
+
+.author-bio-description {
+	font-size: var(--font-size-sm);
+	line-height: 1.6;
+	color: var(--color-text-muted);
+	margin: 0 0 var(--space-3);
+}
+
+.author-all-posts-link {
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	color: var(--color-brand-accent);
+	transition: color var(--transition-fast);
+}
+
+.author-all-posts-link:hover {
+	color: var(--color-brand-accent-hover);
+}
+
+/* ==========================================================================
+   9. Post Navigation (Previous / Next)
+   ========================================================================== */
+
+.post-navigation {
+	margin: var(--space-8) 0;
+	padding: var(--space-4) 0;
+	border-top: 1px solid var(--color-border-subtle);
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.post-navigation .nav-links {
+	display: flex;
+	justify-content: space-between;
+	gap: var(--space-4);
+}
+
+.post-navigation .nav-previous,
+.post-navigation .nav-next {
+	flex: 1 1 50%;
+}
+
+.post-navigation .nav-next {
+	text-align: right;
+}
+
+.post-navigation .nav-subtitle {
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	color: var(--color-text-light);
+	display: block;
+	margin-bottom: 4px;
+}
+
+.post-navigation .nav-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-sm);
+	font-weight: 600;
+	color: var(--color-text-main);
+	line-height: 1.4;
+	transition: color var(--transition-fast);
+}
+
+.post-navigation a:hover .nav-title {
+	color: var(--color-brand-accent);
+}
+
+/* ==========================================================================
+   10. Related Stories Section
+   ========================================================================== */
+
+.related-stories-section {
+	margin: var(--space-10) 0;
+}
+
+/* ==========================================================================
+   11. Accessible Threaded Comments Area
+   ========================================================================== */
+
+.comments-area {
+	margin-top: var(--space-10);
+	padding-top: var(--space-8);
+	border-top: 2px solid var(--color-border-subtle);
+}
+
+.comments-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-lg);
+	font-weight: 700;
+	margin: 0 0 var(--space-6);
+	color: var(--color-text-main);
+	border-left: 4px solid var(--color-brand-primary);
+	padding-left: var(--space-3);
+}
+
+.comment-list {
+	list-style: none;
+	margin: 0 0 var(--space-8);
+	padding: 0;
+}
+
+.comment-list .comment {
+	padding: var(--space-4) 0;
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.comment-list .children {
+	list-style: none;
+	padding-left: var(--space-6);
+	margin-top: var(--space-4);
+	border-left: 2px solid var(--color-border-subtle);
+}
+
+.comment-body {
+	position: relative;
+}
+
+.comment-meta {
+	display: flex;
+	align-items: center;
+	gap: var(--space-3);
+	margin-bottom: var(--space-2);
+}
+
+.comment-author .avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.comment-author .fn {
+	font-weight: 700;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-main);
+}
+
+.comment-metadata {
+	font-size: var(--font-size-xs);
+	color: var(--color-text-light);
+}
+
+.comment-metadata a {
+	color: inherit;
+}
+
+.comment-content {
+	font-size: var(--font-size-base);
+	line-height: 1.6;
+	color: var(--color-text-main);
+	margin-bottom: var(--space-2);
+}
+
+.reply a {
+	display: inline-block;
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	color: var(--color-brand-accent);
+	transition: color var(--transition-fast);
+}
+
+.reply a:hover {
+	color: var(--color-brand-accent-hover);
+}
+
+/* Comment Form Styling */
+.comment-respond {
+	background-color: var(--color-bg-surface);
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 6px;
+	padding: var(--space-6);
+	margin-top: var(--space-6);
+}
+
+.comment-reply-title {
+	font-family: var(--font-bangla);
+	font-size: var(--font-size-md);
+	font-weight: 700;
+	margin: 0 0 var(--space-4);
+	color: var(--color-text-main);
+}
+
+.comment-form p {
+	margin-bottom: var(--space-4);
+}
+
+.comment-form label {
+	display: block;
+	font-size: var(--font-size-xs);
+	font-weight: 700;
+	margin-bottom: var(--space-1);
+	color: var(--color-text-main);
+}
+
+.comment-form input[type="text"],
+.comment-form input[type="email"],
+.comment-form input[type="url"],
+.comment-form textarea {
+	width: 100%;
+	padding: var(--space-3);
+	border: 1px solid var(--color-border-medium);
+	border-radius: 4px;
+	font-size: var(--font-size-base);
+	font-family: var(--font-body);
+	background-color: var(--color-bg-body);
+}
+
+.comment-form input[type="text"]:focus,
+.comment-form input[type="email"]:focus,
+.comment-form input[type="url"]:focus,
+.comment-form textarea:focus {
+	outline: none;
+	border-color: var(--color-brand-primary);
+	box-shadow: 0 0 0 3px rgba(10, 25, 47, 0.1);
+}
+
+.comment-form .form-submit {
+	margin-bottom: 0;
+}
+
+.comment-form input[type="submit"] {
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+	border: none;
+	padding: var(--space-3) var(--space-6);
+	font-size: var(--font-size-sm);
+	font-weight: 700;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color var(--transition-fast);
+}
+
+.comment-form input[type="submit"]:hover {
+	background-color: var(--color-brand-accent-hover);
+}
+

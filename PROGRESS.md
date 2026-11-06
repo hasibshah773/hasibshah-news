@@ -322,4 +322,78 @@
 - **Recommendations / Deferred Info (INFO): 11** (Zero new errors or warnings introduced by Phase 4).
 
 #### Next Milestone (Phase 5):
-- **Phase 5: Single Article View, Related Stories & Comments** (`single.php`, `content-single.php`, reporter byline, publish/update timestamps, reading time badge, featured image with caption, social share buttons, author bio box, related stories query with `no_found_rows => true`, `comments.php`, and `wp_link_pages()`).
+- **Phase 5: Single Article View, Related Stories & Comments** (Completed in Entry 008).
+
+---
+
+### Entry 008 - Phase 5 Complete: Single Article View, Related Stories & Comments
+**Date:** November 7, 2026  
+**Status:** Completed (Awaiting User Review & Approval for Phase 6)
+
+#### Actions Completed:
+1. **Single Article Template Architecture (`single.php`):**
+   - Created `single.php` implementing standard WordPress post loop wrapped in `<main id="primary" class="site-main single-post-main">` and constrained reading container (`.single-article-container`, 860px max width).
+   - Added extensible hooks: `hasibshah_news_single_before_article` and `hasibshah_news_single_after_article`.
+   - Integrated previous/next article navigation via `the_post_navigation()`.
+   - Integrated category-based related stories via `get_template_part( 'template-parts/content/related-stories' )`.
+   - Integrated native WordPress comments via `comments_template()` (addressing Theme Check recommendation).
+2. **Comprehensive Content Template (`template-parts/content/content-single.php`):**
+   - Category pill badge via `hasibshah_news_post_badge()`.
+   - High-impact H1 title (`single-article-title`) with fluid typography and word-break safeguards.
+   - Lead excerpt (`article-lead-excerpt`) for sub-headline support.
+   - Author byline bar with reporter avatar, publication timestamp, update timestamp (if modified), reading time badge, and `hasibshah_news_single_after_byline` hook.
+   - Lightweight, privacy-focused social sharing buttons (Facebook, X/Twitter, WhatsApp, Print) with pure SVG icons and zero tracking cookies.
+   - Featured media presentation with responsive image, caption, and photographer credits.
+   - Long-form editorial body copy with `the_content()`.
+   - **Multi-page Post Pagination (`wp_link_pages()`):** Implemented accessible pagination markup resolving the previously deferred Theme Check REQUIRED error.
+   - Article tags list (`the_tags()`) resolving Theme Check recommendation.
+   - Author biographical card with 72px avatar, author description, and archive link.
+3. **Category-Based Related Stories Engine (`template-parts/content/related-stories.php`):**
+   - Queries related stories sharing the current post's primary category.
+   - Excludes current post ID (`'post__not_in' => array( $current_post_id )`).
+   - Applies `'no_found_rows' => true` for query optimization.
+   - Features graceful fallback to latest news if category has limited posts.
+   - Renders 3-column responsive card grid (`news-grid-12`).
+4. **Single Article Stylesheet (`assets/css/single.css`):**
+   - 480+ lines of dedicated single article styles:
+     - Optimal reading typography: `clamp(1.0625rem, 0.98rem + 0.4vw, 1.22rem)`, line-height `1.78` for Bengali diacritic safety.
+     - Pullquotes and blockquotes with broadsheet border styling.
+     - Drop-caps styling for lead paragraphs (`.has-drop-cap`).
+     - Social share buttons with brand colors.
+     - Multi-page pagination (`.article-page-links`).
+     - Author bio box layout.
+     - Post navigation (`.post-navigation`).
+     - Full styling for native threaded comments (`comments.php`), avatars, comment forms, and submit button.
+5. **Asset Enqueueing Pipeline (`inc/core/assets.php`):**
+   - Conditionally enqueued `hasibshah-news-single` on `is_singular()` with dependency on `hasibshah-news-components`.
+   - Preserves conditional `comment-reply` script when threaded comments are enabled.
+
+#### Verification & Test Results:
+
+##### A. PHP Syntax & Static File Validation:
+- All 23 PHP files across the theme scanned via token parse check: 100% PASS (0 syntax errors, 0 parse errors).
+
+##### B. WordPress Runtime & Single Article Rendering:
+- Simulated single post rendering via WordPress query runtime: 57,862 bytes of valid semantic HTML5.
+- Rendered Element Verification:
+  - `HAS_SINGLE_TITLE`: YES
+  - `HAS_BYLINE`: YES
+  - `HAS_SHARE_BAR`: YES
+  - `HAS_WP_LINK_PAGES`: YES (tested with `<!--nextpage-->` multi-page post)
+  - `HAS_TAGS`: YES
+  - `HAS_AUTHOR_BIO`: YES
+  - `HAS_POST_NAVIGATION`: YES
+  - `HAS_RELATED_STORIES`: YES
+  - `HAS_COMMENTS_AREA`: YES
+  - `HAS_SINGLE_CSS`: YES (conditionally enqueued on single post)
+- **Comments Runtime:** Created test comment and verified comment list, author name, and comment form rendering.
+- **PHP Error Log:** Inspected `wp-content/debug.log`: exactly 0 errors, 0 warnings, 0 notices under active PHP 8.3.36 runtime.
+
+##### C. Official Theme Check Plugin Audit (Version: 20260901):
+- **Overall Scan Status:** **`PASSED`**
+- **Critical Errors (REQUIRED): 0** (The previously deferred `wp_link_pages` finding is now 100% RESOLVED).
+- **Warnings (WARNING): 0**
+- **Recommendations / Deferred Info (INFO): 9** (Reduced from 11; `comments_template` and `tags` findings are now completely resolved; remaining 9 items belong to future phases such as widgets in Phase 6 and block patterns in Phase 7).
+
+#### Next Milestone (Phase 6):
+- **Phase 6: Archives, Category, District, Search & 404 Templates** (`archive.php`, `category.php`, `author.php`, `search.php`, `404.php`, `sidebar.php`, widget areas, and accessible numbered pagination via `the_posts_pagination()`).

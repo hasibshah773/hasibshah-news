@@ -47,7 +47,17 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 			HASIBSHAH_NEWS_VERSION
 		);
 
-		// 5. Primary theme stylesheet.
+		// 5. Single article typography, bylines, social share, and comments.
+		if ( is_singular() ) {
+			wp_enqueue_style(
+				'hasibshah-news-single',
+				HASIBSHAH_NEWS_URI . '/assets/css/single.css',
+				array( 'hasibshah-news-components' ),
+				HASIBSHAH_NEWS_VERSION
+			);
+		}
+
+		// 6. Primary theme stylesheet.
 		wp_enqueue_style(
 			'hasibshah-news-style',
 			get_stylesheet_uri(),
@@ -55,7 +65,7 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 			HASIBSHAH_NEWS_VERSION
 		);
 
-		// 6. Navigation, mobile drawer, and interactive controls script.
+		// 7. Navigation, mobile drawer, and interactive controls script.
 		wp_enqueue_script(
 			'hasibshah-news-navigation',
 			HASIBSHAH_NEWS_URI . '/assets/js/navigation.js',
