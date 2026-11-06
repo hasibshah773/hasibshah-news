@@ -47,3 +47,20 @@ if ( ! function_exists( 'hasibshah_news_posted_by' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'hasibshah_news_nav_fallback' ) ) :
+	/**
+	 * Fallback menu callback when no primary menu is assigned.
+	 */
+	function hasibshah_news_nav_fallback() {
+		echo '<ul id="primary-menu" class="news-primary-nav-menu">';
+		wp_list_pages(
+			array(
+				'title_li' => '',
+				'depth'    => 2,
+				'number'   => 8,
+			)
+		);
+		echo '</ul>';
+	}
+endif;
+

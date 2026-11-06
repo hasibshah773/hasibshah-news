@@ -1,0 +1,652 @@
+/**
+ * HasibShah News - Header, Navigation & Ticker Styles
+ *
+ * Architecture: Professional broadsheet newspaper masthead,
+ * accessible multi-level navigation, mobile off-canvas drawer,
+ * and high-impact breaking news ticker.
+ *
+ * @package HasibShah_News
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   1. Newspaper Topbar
+   ========================================================================== */
+
+.news-topbar {
+	background-color: var(--color-bg-surface);
+	border-bottom: 1px solid var(--color-border-subtle);
+	font-size: var(--font-size-xs);
+	color: var(--color-text-muted);
+	padding: var(--space-2) 0;
+	line-height: var(--line-height-heading);
+}
+
+.news-topbar-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-2);
+}
+
+.news-topbar-left {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: var(--space-3);
+}
+
+.news-date-display {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.news-date-icon {
+	display: inline-flex;
+	color: var(--color-brand-accent);
+}
+
+.news-date-bangla {
+	font-family: var(--font-bangla);
+	font-weight: 600;
+	color: var(--color-text-main);
+}
+
+.news-date-separator {
+	color: var(--color-border-medium);
+}
+
+.news-date-english {
+	font-family: var(--font-english);
+}
+
+.news-edition-badge {
+	display: inline-block;
+	background-color: var(--color-cat-bangladesh);
+	color: var(--color-text-inverse);
+	font-size: 0.7rem;
+	font-weight: 700;
+	padding: 0.15rem 0.5rem;
+	border-radius: 3px;
+	letter-spacing: 0.02em;
+}
+
+.news-topbar-right {
+	display: flex;
+	align-items: center;
+	gap: var(--space-4);
+}
+
+.topbar-navigation ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: var(--space-3);
+}
+
+.topbar-navigation a {
+	color: var(--color-text-muted);
+	font-size: var(--font-size-xs);
+	transition: color var(--transition-fast);
+}
+
+.topbar-navigation a:hover {
+	color: var(--color-brand-accent);
+}
+
+/* ==========================================================================
+   2. Newspaper Masthead
+   ========================================================================== */
+
+.news-masthead {
+	background-color: var(--color-bg-body);
+	border-bottom: 2px solid var(--color-border-strong);
+	padding: var(--space-6) 0;
+}
+
+.news-masthead-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--space-6);
+}
+
+.news-branding-block {
+	flex: 1 1 auto;
+}
+
+.news-title-wrap {
+	display: flex;
+	flex-direction: column;
+}
+
+.site-title {
+	margin: 0;
+	font-size: clamp(2rem, 1.4rem + 2.5vw, 3.25rem);
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 1.2;
+}
+
+.site-title a {
+	color: var(--color-brand-primary);
+	text-decoration: none;
+}
+
+.site-title a:hover {
+	color: var(--color-brand-accent);
+}
+
+.site-description {
+	margin: var(--space-1) 0 0;
+	font-size: var(--font-size-sm);
+	color: var(--color-text-muted);
+	letter-spacing: 0.04em;
+	font-weight: 500;
+}
+
+.custom-logo-link img {
+	max-height: 80px;
+	width: auto;
+}
+
+/* Header Leaderboard Banner Slot */
+.news-masthead-ad-slot {
+	display: none;
+}
+
+@media (min-width: 992px) {
+	.news-masthead-ad-slot {
+		display: block;
+		flex: 0 0 728px;
+		max-width: 728px;
+	}
+
+	.news-header-banner-placeholder {
+		width: 728px;
+		height: 90px;
+		background-color: var(--color-bg-surface-alt);
+		border: 1px dashed var(--color-border-medium);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 4px;
+	}
+
+	.banner-label {
+		font-size: var(--font-size-xs);
+		color: var(--color-text-light);
+		font-weight: 500;
+	}
+}
+
+/* ==========================================================================
+   3. Main Primary Navigation (Desktop)
+   ========================================================================== */
+
+.news-main-navigation {
+	background-color: var(--color-brand-primary);
+	color: var(--color-text-inverse);
+	position: sticky;
+	top: 0;
+	z-index: 1000;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.news-nav-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 48px;
+}
+
+.nav-home-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--color-text-inverse);
+	padding: var(--space-3) var(--space-3);
+	background-color: rgba(255, 255, 255, 0.08);
+	transition: background-color var(--transition-fast);
+}
+
+.nav-home-icon:hover {
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+}
+
+.desktop-navigation-wrapper {
+	display: none;
+	flex: 1 1 auto;
+}
+
+@media (min-width: 992px) {
+	.desktop-navigation-wrapper {
+		display: block;
+	}
+}
+
+.news-primary-nav-menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.news-primary-nav-menu > li {
+	position: relative;
+}
+
+.news-primary-nav-menu > li > a {
+	display: block;
+	padding: 0.85rem 1rem;
+	color: var(--color-text-inverse);
+	font-weight: 600;
+	font-size: var(--font-size-sm);
+	letter-spacing: 0.01em;
+	transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.news-primary-nav-menu > li:hover > a,
+.news-primary-nav-menu > li > a:focus,
+.news-primary-nav-menu > .current-menu-item > a {
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+}
+
+/* Sub-menus / Dropdowns */
+.news-primary-nav-menu ul.sub-menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 1001;
+	min-width: 200px;
+	background-color: var(--color-bg-body);
+	border: 1px solid var(--color-border-subtle);
+	box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+	list-style: none;
+	margin: 0;
+	padding: var(--space-2) 0;
+	display: none;
+}
+
+.news-primary-nav-menu li:hover > ul.sub-menu,
+.news-primary-nav-menu li:focus-within > ul.sub-menu,
+.news-primary-nav-menu li.focus > ul.sub-menu {
+	display: block;
+}
+
+.news-primary-nav-menu ul.sub-menu a {
+	display: block;
+	padding: var(--space-2) var(--space-4);
+	color: var(--color-text-main);
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	line-height: var(--line-height-heading);
+	transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.news-primary-nav-menu ul.sub-menu a:hover,
+.news-primary-nav-menu ul.sub-menu a:focus {
+	background-color: var(--color-bg-surface-alt);
+	color: var(--color-brand-accent);
+}
+
+/* Actions Right (Search Trigger) */
+.nav-actions-right {
+	display: flex;
+	align-items: center;
+}
+
+.header-search-toggle {
+	background: transparent;
+	border: none;
+	color: var(--color-text-inverse);
+	cursor: pointer;
+	padding: var(--space-3);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color var(--transition-fast);
+}
+
+.header-search-toggle:hover,
+.header-search-toggle:focus {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dropdown Search Container */
+.header-search-dropdown {
+	display: none;
+	background-color: var(--color-bg-surface);
+	border-bottom: 2px solid var(--color-brand-primary);
+	padding: var(--space-4) 0;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header-search-dropdown.is-active {
+	display: block;
+}
+
+.header-search-container form {
+	display: flex;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.header-search-container input[type="search"] {
+	flex: 1 1 auto;
+	padding: var(--space-3) var(--space-4);
+	border: 1px solid var(--color-border-medium);
+	border-right: none;
+	border-radius: 4px 0 0 4px;
+	font-size: var(--font-size-base);
+	font-family: var(--font-body);
+}
+
+.header-search-container button[type="submit"],
+.header-search-container input[type="submit"] {
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+	border: none;
+	padding: var(--space-3) var(--space-6);
+	font-weight: 700;
+	border-radius: 0 4px 4px 0;
+	cursor: pointer;
+}
+
+/* ==========================================================================
+   4. Mobile Navigation & Drawer
+   ========================================================================== */
+
+.mobile-menu-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	background: transparent;
+	border: none;
+	color: var(--color-text-inverse);
+	font-family: var(--font-body);
+	font-size: var(--font-size-base);
+	font-weight: 700;
+	padding: var(--space-3) var(--space-2);
+	cursor: pointer;
+}
+
+@media (min-width: 992px) {
+	.mobile-menu-toggle {
+		display: none;
+	}
+}
+
+.hamburger-box {
+	width: 20px;
+	height: 14px;
+	display: inline-block;
+	position: relative;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+	width: 20px;
+	height: 2px;
+	background-color: var(--color-text-inverse);
+	border-radius: 2px;
+	position: absolute;
+	transition: transform var(--transition-fast);
+}
+
+.hamburger-inner {
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.hamburger-inner::before {
+	content: '';
+	top: -6px;
+}
+
+.hamburger-inner::after {
+	content: '';
+	bottom: -6px;
+}
+
+/* Off-Canvas Drawer */
+body.mobile-drawer-open {
+	overflow: hidden;
+}
+
+.mobile-navigation-drawer {
+	position: fixed;
+	top: 0;
+	left: -320px;
+	width: 300px;
+	max-width: 85vw;
+	height: 100vh;
+	background-color: var(--color-bg-body);
+	box-shadow: 2px 0 16px rgba(0, 0, 0, 0.2);
+	z-index: 2000;
+	overflow-y: auto;
+	transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+	visibility: hidden;
+}
+
+.mobile-navigation-drawer.is-open {
+	transform: translateX(320px);
+	visibility: visible;
+}
+
+.mobile-drawer-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: var(--space-4);
+	background-color: var(--color-brand-primary);
+	color: var(--color-text-inverse);
+}
+
+.drawer-title {
+	font-weight: 700;
+	font-size: var(--font-size-md);
+}
+
+.mobile-menu-close {
+	background: transparent;
+	border: none;
+	color: var(--color-text-inverse);
+	cursor: pointer;
+	padding: var(--space-1);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.mobile-drawer-content {
+	padding: var(--space-4);
+}
+
+.mobile-drawer-search {
+	margin-bottom: var(--space-4);
+}
+
+.mobile-nav-tree ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.mobile-nav-tree li {
+	border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.mobile-nav-tree a {
+	display: block;
+	padding: var(--space-3) var(--space-2);
+	color: var(--color-text-main);
+	font-weight: 600;
+	font-size: var(--font-size-base);
+}
+
+.mobile-nav-tree ul.sub-menu {
+	padding-left: var(--space-4);
+	background-color: var(--color-bg-surface);
+}
+
+.mobile-drawer-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1999;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.3s ease;
+}
+
+.mobile-drawer-backdrop.is-visible {
+	opacity: 1;
+	visibility: visible;
+}
+
+/* ==========================================================================
+   5. Breaking News Ticker
+   ========================================================================== */
+
+.news-breaking-ticker {
+	background-color: var(--color-bg-surface-alt);
+	border-bottom: 1px solid var(--color-border-subtle);
+	padding: 0;
+}
+
+.news-ticker-container {
+	display: flex;
+	align-items: center;
+	min-height: 40px;
+}
+
+.ticker-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	background-color: var(--color-brand-accent);
+	color: var(--color-text-inverse);
+	padding: var(--space-2) var(--space-4);
+	font-weight: 700;
+	font-size: var(--font-size-xs);
+	letter-spacing: 0.02em;
+	flex-shrink: 0;
+	z-index: 2;
+}
+
+.ticker-pulse-dot {
+	width: 8px;
+	height: 8px;
+	background-color: #FFFFFF;
+	border-radius: 50%;
+	display: inline-block;
+	animation: tickerPulse 1.5s infinite;
+}
+
+@keyframes tickerPulse {
+	0%   { transform: scale(0.95); opacity: 0.7; }
+	50%  { transform: scale(1.3);  opacity: 1;   }
+	100% { transform: scale(0.95); opacity: 0.7; }
+}
+
+.ticker-content-viewport {
+	flex: 1 1 auto;
+	overflow: hidden;
+	position: relative;
+	white-space: nowrap;
+	padding: 0 var(--space-4);
+}
+
+.ticker-track {
+	display: inline-flex;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	animation: tickerScroll 30s linear infinite;
+}
+
+.ticker-track:hover,
+.ticker-track:focus-within {
+	animation-play-state: paused;
+}
+
+.ticker-track.is-paused {
+	animation-play-state: paused;
+}
+
+@keyframes tickerScroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ticker-track {
+		animation: none;
+	}
+}
+
+.ticker-item {
+	display: inline-flex;
+	align-items: center;
+	padding-right: var(--space-8);
+}
+
+.ticker-link {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	color: var(--color-text-main);
+	font-size: var(--font-size-sm);
+	font-weight: 500;
+	transition: color var(--transition-fast);
+}
+
+.ticker-link:hover,
+.ticker-link:focus {
+	color: var(--color-brand-accent);
+}
+
+.ticker-bullet {
+	color: var(--color-brand-accent);
+	font-weight: bold;
+}
+
+.ticker-controls {
+	flex-shrink: 0;
+	padding-left: var(--space-2);
+}
+
+.ticker-pause-toggle {
+	background: transparent;
+	border: 1px solid var(--color-border-subtle);
+	border-radius: 3px;
+	color: var(--color-text-muted);
+	cursor: pointer;
+	padding: 0.25rem 0.4rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.ticker-pause-toggle:hover,
+.ticker-pause-toggle:focus {
+	background-color: var(--color-bg-surface);
+	color: var(--color-brand-accent);
+}

@@ -31,12 +31,29 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 			HASIBSHAH_NEWS_VERSION
 		);
 
-		// 3. Primary theme stylesheet.
+		// 3. Header, navigation, and breaking news ticker styles.
+		wp_enqueue_style(
+			'hasibshah-news-header',
+			HASIBSHAH_NEWS_URI . '/assets/css/header.css',
+			array( 'hasibshah-news-layout' ),
+			HASIBSHAH_NEWS_VERSION
+		);
+
+		// 4. Primary theme stylesheet.
 		wp_enqueue_style(
 			'hasibshah-news-style',
 			get_stylesheet_uri(),
-			array( 'hasibshah-news-layout' ),
+			array( 'hasibshah-news-header' ),
 			HASIBSHAH_NEWS_VERSION
+		);
+
+		// 5. Navigation, mobile drawer, and interactive controls script.
+		wp_enqueue_script(
+			'hasibshah-news-navigation',
+			HASIBSHAH_NEWS_URI . '/assets/js/navigation.js',
+			array(),
+			HASIBSHAH_NEWS_VERSION,
+			true
 		);
 
 		// Conditionally enqueue comment reply script for threaded discussions.

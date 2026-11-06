@@ -31,40 +31,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 	<?php do_action( 'hasibshah_news_before_header' ); ?>
 
 	<header id="masthead" class="site-header">
-		<div class="site-header-container">
-			<div class="site-branding">
-				<?php
-				if ( has_custom_logo() ) :
-					the_custom_logo();
-				else :
-					?>
-					<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php
-					$hasibshah_news_description = get_bloginfo( 'description', 'display' );
-					if ( $hasibshah_news_description || is_customize_preview() ) :
-						?>
-						<p class="site-description"><?php echo esc_html( $hasibshah_news_description ); ?></p>
-						<?php
-					endif;
-				endif;
-				?>
-			</div><!-- .site-branding -->
+		<?php
+		// 1. Newspaper Topbar (Date, Edition, Secondary Menu).
+		get_template_part( 'template-parts/header/topbar' );
 
-			<nav id="site-navigation" class="main-navigation" aria-label="<?php esc_attr_e( 'Primary Navigation', 'hasibshah-news' ); ?>">
-				<?php
-				if ( has_nav_menu( 'primary' ) ) :
-					wp_nav_menu(
-						array(
-							'theme_location' => 'primary',
-							'menu_id'        => 'primary-menu',
-							'container'      => false,
-							'fallback_cb'    => false,
-						)
-					);
-				endif;
-				?>
-			</nav><!-- #site-navigation -->
-		</div><!-- .site-header-container -->
+		// 2. Main Newspaper Masthead (Branding, Logo, Tagline, Header Banner Slot).
+		get_template_part( 'template-parts/header/masthead' );
+
+		// 3. Primary Navigation Menu (Desktop bar, Dropdowns, Mobile Drawer, Search Trigger).
+		get_template_part( 'template-parts/header/navigation' );
+
+		// 4. Breaking News Ticker.
+		get_template_part( 'template-parts/header/breaking-ticker' );
+		?>
 	</header><!-- #masthead -->
 
 	<?php do_action( 'hasibshah_news_after_header' ); ?>

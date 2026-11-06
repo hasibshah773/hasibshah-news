@@ -35,4 +35,5 @@ add_action( 'after_setup_theme', 'hasibshah_news_content_width', 0 );
 require_once HASIBSHAH_NEWS_DIR . '/inc/core/setup.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/core/assets.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/core/template-tags.php';
+require_once HASIBSHAH_NEWS_DIR . '/inc/editorial/bangla-date.php';
 

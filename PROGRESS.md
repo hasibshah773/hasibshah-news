@@ -158,4 +158,83 @@
 - **Recommendations / Deferred Info (INFO): 11** (Reduced from 17 in Phase 1; all CSS alignment, caption, and sticky class recommendations were resolved). Remaining 11 items belong to future phases (block patterns in Phase 7, single comments in Phase 5, sidebars in Phase 6).
 
 #### Next Milestone (Phase 3):
-- **Phase 3: Header, Navigation & Breaking News Ticker** (Semantic `<header>`, topbar with dynamic Bengali date, newspaper masthead with custom logo, accessible keyboard navigation menu, responsive mobile drawer, and accessible breaking news ticker).
+- **Phase 3: Header, Navigation & Breaking News Ticker** (Completed in Entry 006).
+
+---
+
+### Entry 006 - Phase 3 Complete: Header, Navigation & Breaking News Ticker
+**Date:** November 4, 2026  
+**Status:** Completed (Awaiting User Review & Approval for Phase 4)
+
+#### Actions Completed:
+1. **Bangla & English Date Formatter (`inc/editorial/bangla-date.php`):**
+   - Created pure PHP date and number converter with zero external library dependencies.
+   - Converts Western numerals (0–9) to Bengali numerals (০–৯) with `hasibshah_news_to_bangla_digits()`.
+   - Formats complete localized Bengali dates (`hasibshah_news_get_bangla_date()`) matching Bangladesh newspaper standards (e.g. "বুধবার, ৪ নভেম্বর ২০২৬").
+   - Provides companion English date string (`hasibshah_news_get_english_date()`, e.g. "Wednesday, 4 November 2026").
+   - Required modularly in `functions.php`.
+2. **Modular Semantic Header Architecture (`header.php`):**
+   - Restructured `<header id="masthead" class="site-header">` into 4 clean, maintainable template parts in `template-parts/header/`.
+   - Added extensible action hooks: `hasibshah_news_before_header` and `hasibshah_news_after_header`.
+3. **Newspaper Topbar (`template-parts/header/topbar.php`):**
+   - Left side: Calendar SVG icon, dynamic bilingual date display, and prominent Dhaka Edition badge ("ঢাকা সংস্করণ").
+   - Right side: Secondary editorial menu location (`secondary`) with graceful empty state.
+4. **Broadsheet Masthead & Leaderboard Ad (`template-parts/header/masthead.php`):**
+   - Site branding supporting WordPress Custom Logo (`the_custom_logo()`), or fallback site title (`h1` on frontpage, `p` on inner pages) and site description.
+   - Responsive 728x90 leaderboard ad slot with `hasibshah_news_header_ad` hook and clean placeholder styling. Automatically hides on viewports < 992px to eliminate mobile horizontal overflow.
+5. **Primary Navigation Bar (`template-parts/header/navigation.php`):**
+   - High-contrast newspaper navy navigation strip (`#site-navigation`).
+   - Sticky navbar, home icon button, primary menu (`theme_location => primary`), and search toggle button.
+   - Built-in fallback (`hasibshah_news_nav_fallback()`) in `inc/core/template-tags.php` rendering category list when no menu is assigned in WordPress admin.
+   - Dropdown search form with autofocus and keyboard dismissal.
+6. **Mobile Off-Canvas Drawer Navigation (`template-parts/header/navigation.php`):**
+   - Hamburger trigger button (`#mobile-menu-toggle`) with `aria-controls` and `aria-expanded`.
+   - Accessible off-canvas sliding drawer (`#mobile-navigation-drawer`) with `role="dialog"`, `aria-modal="true"`, and `aria-label`.
+   - Dedicated close button, mobile search bar, and full vertical category menu.
+   - Fixed semi-transparent backdrop overlay (`#mobile-drawer-backdrop`).
+7. **Breaking News Ticker (`template-parts/header/breaking-ticker.php`):**
+   - Urgent red pulse dot badge ("ব্রেকিং নিউজ").
+   - Query optimization: 5 latest published posts with `no_found_rows => true` and `ignore_sticky_posts => 1`.
+   - Continuous CSS horizontal marquee animation with pause-on-hover and pause-on-focus.
+   - Fallback welcome message when no posts exist.
+   - Accessible manual Pause/Play button (`#ticker-pause-toggle`) with SVG icon switching and `aria-pressed` states.
+   - Media query `prefers-reduced-motion: reduce` for full motion accessibility.
+8. **Vanilla JS Interactivity & Accessibility Engine (`assets/js/navigation.js`):**
+   - Pure vanilla JavaScript with zero jQuery dependencies.
+   - Elementor editor guard: checks `body.classList.contains('elementor-editor-active')` to prevent focus trapping or event interference during page editing.
+   - WCAG 2.1 AA keyboard focus trapping inside open mobile drawer (Tab / Shift+Tab looping).
+   - Global Escape key listener to close mobile drawer and search bar.
+   - Outside-click detection to dismiss the search bar.
+   - Keyboard dropdown navigation support: toggles `.focus` class on ancestor `li` items for tabbing through multi-level submenus.
+9. **Asset Enqueueing Pipeline (`inc/core/assets.php`):**
+   - Enqueued `hasibshah-news-header` (`assets/css/header.css`, depends on `hasibshah-news-layout`).
+   - Enqueued `hasibshah-news-navigation` (`assets/js/navigation.js`, footer script).
+
+#### Verification & Test Results:
+
+##### A. PHP Syntax & Static File Validation:
+- All 13 PHP files across the theme scanned via token parse check: 100% PASS (0 syntax errors, 0 parse errors).
+
+##### B. Runtime & HTTP Verification:
+- **Frontend HTTP Response:** `GET http://my-jyoyful-website.wp.local/` returned `HTTP 200 OK`.
+- **Rendered DOM Verification:** Verified presence of `news-topbar`, localized Bangla date, edition badge, `news-masthead`, `news-branding-block`, `news-masthead-ad-slot`, `site-navigation`, `mobile-navigation-drawer`, `news-breaking-ticker`, and `ticker-track`.
+- **Asset Loading:**
+  - `assets/css/header.css`: `HTTP 200 OK` (13,357 bytes).
+  - `assets/js/navigation.js`: `HTTP 200 OK` (8,284 bytes).
+- **PHP Error Log:** Inspected `wp-content/debug.log`: exactly 0 errors, 0 warnings, 0 notices under active PHP 8.3.36 runtime.
+
+##### C. Visual & Viewport Audit:
+- **Desktop (>= 992px):** Leaderboard ad (728x90) and desktop navigation visible; mobile toggle hidden; multi-level dropdowns functional on hover and keyboard focus (`li:focus-within`).
+- **Tablet & Mobile (< 992px):** Leaderboard ad hidden (no horizontal scroll); hamburger button visible; off-canvas drawer slides smoothly from left; backdrop dims background; body scroll locked with `body.mobile-drawer-open`.
+- **Accessibility:** Focus trapped within mobile drawer; Escape key closes drawer and search bar; ticker pauses on hover/focus and via manual toggle; `prefers-reduced-motion` halts animation.
+
+##### D. Theme Check Plugin Audit (Version: 20260901):
+- **Overall Scan Status:** `FAILED / NEEDS ATTENTION` (Expected milestone limitation)
+- **Critical Errors (REQUIRED): 1**
+  - `[REQUIRED] REQUIRED: Could not find wp_link_pages. See: wp_link_pages <?php wp_link_pages( $args ); ?>`  
+    *Deferred Reason:* Belongs in `single.php` / `page.php` with `the_content()`. Scheduled for **Phase 5**.
+- **Warnings (WARNING): 0**
+- **Recommendations / Deferred Info (INFO): 11** (Same 11 future-phase items as Phase 2; zero new errors or warnings introduced).
+
+#### Next Milestone (Phase 4):
+- **Phase 4: Homepage & Editorial Section Grid Layouts** (Editorial Broadsheet Hero Cover, 3-column newspaper grid, Lead Story card with high-impact typography, secondary sub-lead stack, sidebar opinion/trending tab, and category-accented section headers).
