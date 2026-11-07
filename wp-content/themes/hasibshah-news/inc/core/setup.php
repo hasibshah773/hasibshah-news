@@ -93,3 +93,73 @@ if ( ! function_exists( 'hasibshah_news_setup' ) ) :
 	}
 endif;
 add_action( 'after_setup_theme', 'hasibshah_news_setup' );
+
+if ( ! function_exists( 'hasibshah_news_widgets_init' ) ) :
+	/**
+	 * Register widget areas.
+	 *
+	 * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
+	 */
+	function hasibshah_news_widgets_init() {
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Main Editorial Sidebar', 'hasibshah-news' ),
+				'id'            => 'sidebar-1',
+				'description'   => esc_html__( 'Add widgets here to appear in your sidebar on archives, posts, and search.', 'hasibshah-news' ),
+				'before_widget' => '<section id="%1$s" class="widget %2$s">',
+				'after_widget'  => '</section>',
+				'before_title'  => '<h3 class="widget-title"><span class="widget-title-accent" aria-hidden="true"></span>',
+				'after_title'   => '</h3>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Header Ad Banner', 'hasibshah-news' ),
+				'id'            => 'header-ad-sidebar',
+				'description'   => esc_html__( 'Add 728x90 leaderboard banner widget here.', 'hasibshah-news' ),
+				'before_widget' => '<div id="%1$s" class="widget %2$s header-ad-widget">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<span class="screen-reader-text">',
+				'after_title'   => '</span>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Footer Column 1', 'hasibshah-news' ),
+				'id'            => 'footer-sidebar-1',
+				'description'   => esc_html__( 'Add widgets here to appear in the first footer column.', 'hasibshah-news' ),
+				'before_widget' => '<div id="%1$s" class="widget footer-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="footer-widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Footer Column 2', 'hasibshah-news' ),
+				'id'            => 'footer-sidebar-2',
+				'description'   => esc_html__( 'Add widgets here to appear in the second footer column.', 'hasibshah-news' ),
+				'before_widget' => '<div id="%1$s" class="widget footer-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="footer-widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
+
+		register_sidebar(
+			array(
+				'name'          => esc_html__( 'Footer Column 3', 'hasibshah-news' ),
+				'id'            => 'footer-sidebar-3',
+				'description'   => esc_html__( 'Add widgets here to appear in the third footer column.', 'hasibshah-news' ),
+				'before_widget' => '<div id="%1$s" class="widget footer-widget %2$s">',
+				'after_widget'  => '</div>',
+				'before_title'  => '<h4 class="footer-widget-title">',
+				'after_title'   => '</h4>',
+			)
+		);
+	}
+endif;
+add_action( 'widgets_init', 'hasibshah_news_widgets_init' );

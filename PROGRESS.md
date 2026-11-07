@@ -396,4 +396,72 @@
 - **Recommendations / Deferred Info (INFO): 9** (Reduced from 11; `comments_template` and `tags` findings are now completely resolved; remaining 9 items belong to future phases such as widgets in Phase 6 and block patterns in Phase 7).
 
 #### Next Milestone (Phase 6):
-- **Phase 6: Archives, Category, District, Search & 404 Templates** (`archive.php`, `category.php`, `author.php`, `search.php`, `404.php`, `sidebar.php`, widget areas, and accessible numbered pagination via `the_posts_pagination()`).
+- [x] **Phase 6: Archives, Category, District, Search & 404 Templates** (`archive.php`, `category.php`, `author.php`, `search.php`, `404.php`, `sidebar.php`, widget areas, and accessible numbered pagination via `the_posts_pagination()`).
+
+---
+
+### [2026-11-07] - Entry 009: Phase 6 Complete — Archives, Category, District, Search & 404 Templates
+
+#### Status Overview:
+- **Phase 6 Status:** COMPLETED.
+- **Git Commit:** Ready for staging and commit.
+- **Theme Check Status:** **PASSED** (Critical Errors: 0, Warnings: 0, Info: 8).
+- **PHP Syntax:** 32 / 32 PHP files passed (0 syntax or parse errors).
+- **Runtime Testing:** 100% pass across Archive, Category, Author, Search, 404, Sidebar, and Empty States.
+
+#### Key Architectural & Template Deliverables:
+
+1. **Standard & Specialized Archive Hierarchy:**
+   - **`archive.php`:** Broadsheet 2-column editorial feed (`layout-content-sidebar`) supporting tag, date, and generic taxonomy archives.
+   - **`category.php`:** Specialized category template with dynamic category color accent bars (`cat-accent-bangladesh`, `cat-accent-politics`, etc.) and horizontal subcategory / district chips navigation bar (`category-subnav`).
+   - **`author.php`:** Authoritative journalist / reporter profile template displaying 96px circular author avatar, reporter designation, biography, total published articles counter in Bengali numerals (`hasibshah_news_to_bangla_number()`), website link, and journalist article feed.
+   - **`search.php`:** Broadsheet search results page featuring search query display, total result count badge in Bengali numerals (`$wp_query->found_posts`), inline refined search bar, and results feed.
+   - **`404.php`:** Engaging newspaper error page featuring bold "৪০৪" Bengali numeral graphic, search box, return to homepage button, quick category navigation chips, and a 4-card editorial fallback grid displaying latest top stories (`no_found_rows => true`).
+   - **`index.php`:** Standard fallback updated to use the unified broadsheet card feed and accessible pagination.
+
+2. **Accessible Numbered Pagination:**
+   - Configured `the_posts_pagination()` across all archive templates with accessible arrow indicators (`&larr; পূর্ববর্তী`, `পরবর্তী &rarr;`) and screen-reader page labels.
+   - Maintained query integrity: refrained from using `'no_found_rows'` on main archive queries so SQL row calculation accurately determines total pages.
+   - Formatted pagination controls in CSS with minimum 44px touch targets meeting WCAG 2.1 AA accessibility standards.
+
+3. **Reusable Content Components:**
+   - **`template-parts/content/content.php`:** Universal archive news card featuring 16:9 thumbnail, category badge, title with hover transition, author byline, time-ago relative timestamp in Bengali, reading time badge, and 3-line clamped excerpt.
+   - **`template-parts/content/content-none.php`:** Accessible zero-results empty state offering friendly Bengali messaging, integrated search form, and popular category recommendation chips.
+   - **`searchform.php`:** Accessible HTML5 search form with unique IDs, screen-reader text, and bilingual placeholders.
+
+4. **Widget Areas & Sidebar (`sidebar.php` & `inc/core/setup.php`):**
+   - Registered 5 official widget areas via `hasibshah_news_widgets_init()`:
+     - `sidebar-1`: Main Editorial Sidebar (archives, single posts, search).
+     - `header-ad-sidebar`: Header Ad Banner (728x90 leaderboard slot).
+     - `footer-sidebar-1`, `footer-sidebar-2`, `footer-sidebar-3`: 3-column footer widget areas.
+   - Implemented `sidebar.php` with safe `is_active_sidebar( 'sidebar-1' )` guard.
+   - Connected `header-ad-sidebar` to `template-parts/header/masthead.php`.
+
+5. **Archive Stylesheet (`assets/css/archive.css`) & Asset Pipeline:**
+   - Authored 530+ lines of modular, scoped CSS covering archive headers, category accent bars, horizontal card feeds, author profile cards, search metrics, 404 layouts, numbered pagination, and comprehensive widget styling.
+   - Conditionally enqueued `hasibshah-news-archive` in `inc/core/assets.php` on `is_archive() || is_search() || is_404() || is_home()` with dependency on `hasibshah-news-components`.
+
+#### Verification & Test Results:
+
+##### A. PHP Syntax Validation:
+- Scanned all 32 PHP files across the theme: 100% PASS (0 syntax errors, 0 parse errors).
+
+##### B. WordPress Runtime Testing (`scratch/test_phase6_runtime.php` & `scratch/test_sidebar.php`):
+- **Widgets Registration:** All 5 widget sidebars registered and verified.
+- **404 Template:** 51,945 bytes rendered; `HAS_404_BOX`, `HAS_404_CODE`, `HAS_BANGLA_DIGITS`, `HAS_SEARCH_FORM`, `HAS_TOP_STORIES`, and `HAS_ARCHIVE_CSS` all PASS.
+- **Archive Template:** 21,593 bytes rendered; `HAS_ARCHIVE_HEADER`, `HAS_ARCHIVE_FEED`, `HAS_ARCHIVE_CARD`, `HAS_ARCHIVE_MEDIA`, `HAS_ARCHIVE_META`, `HAS_PAGINATION`, and `HAS_CONTENT_SIDEBAR` all PASS.
+- **Category Template:** 11,083 bytes rendered; `HAS_CATEGORY_HEADER`, `HAS_CATEGORY_TITLE`, `HAS_CATEGORY_ACCENT`, `HAS_CATEGORY_FEED`, and `HAS_CATEGORY_CARD` all PASS.
+- **Author Template:** 23,694 bytes rendered; `HAS_AUTHOR_PROFILE`, `HAS_AUTHOR_AVATAR`, `HAS_AUTHOR_NAME`, `HAS_AUTHOR_COUNT`, and `HAS_AUTHOR_FEED` all PASS.
+- **Search Template:** 5,352 bytes rendered; `HAS_SEARCH_HEADER`, `HAS_SEARCH_TITLE`, `HAS_SEARCH_COUNT`, `HAS_SEARCH_FORM`, and `HAS_EDITORIAL_MAIN` all PASS.
+- **Empty State (`content-none.php`):** 5,452 bytes rendered; `HAS_EMPTY_STATE`, `HAS_EMPTY_ICON`, `HAS_SEARCH_FORM_EMPTY`, and `HAS_SUGGESTIONS` all PASS.
+- **Sidebar Widget Logic:** Verified clean output when active and zero extraneous HTML markup when inactive.
+- **PHP Error Log:** Inspected `wp-content/debug.log`: 0 errors, 0 warnings, 0 notices generated by theme code.
+
+##### C. Official Theme Check Plugin Audit (Version: 20260901):
+- **Overall Scan Status:** **`PASSED`**
+- **Critical Errors (REQUIRED): 0**
+- **Warnings (WARNING): 0**
+- **Recommendations / Deferred Info (INFO): 8** (Reduced from 9; all widgets-related requirements fully satisfied; remaining 8 items belong to Phase 7 block patterns/styles and style.css header URIs).
+
+#### Next Milestone (Phase 7):
+- **Phase 7: Elementor & Gutenberg Integration** (Clean page container templates, Elementor editor iframe safety guards in `inc/compatibility/elementor.php`, Gutenberg custom news block patterns, editor styling in `assets/css/editor-style.css`, and empirical 4-stage Elementor test suite).

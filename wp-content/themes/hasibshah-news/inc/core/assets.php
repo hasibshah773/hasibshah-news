@@ -57,7 +57,17 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 			);
 		}
 
-		// 6. Primary theme stylesheet.
+		// 6. Archive, category, district, search, author, and 404 templates.
+		if ( is_archive() || is_search() || is_404() || is_home() ) {
+			wp_enqueue_style(
+				'hasibshah-news-archive',
+				HASIBSHAH_NEWS_URI . '/assets/css/archive.css',
+				array( 'hasibshah-news-components' ),
+				HASIBSHAH_NEWS_VERSION
+			);
+		}
+
+		// 7. Primary theme stylesheet.
 		wp_enqueue_style(
 			'hasibshah-news-style',
 			get_stylesheet_uri(),
@@ -65,7 +75,7 @@ if ( ! function_exists( 'hasibshah_news_scripts' ) ) :
 			HASIBSHAH_NEWS_VERSION
 		);
 
-		// 7. Navigation, mobile drawer, and interactive controls script.
+		// 8. Navigation, mobile drawer, and interactive controls script.
 		wp_enqueue_script(
 			'hasibshah-news-navigation',
 			HASIBSHAH_NEWS_URI . '/assets/js/navigation.js',

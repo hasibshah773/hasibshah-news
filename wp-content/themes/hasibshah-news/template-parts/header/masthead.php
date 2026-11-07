@@ -54,6 +54,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php
 			if ( has_action( 'hasibshah_news_header_ad' ) ) :
 				do_action( 'hasibshah_news_header_ad' );
+			elseif ( is_active_sidebar( 'header-ad-sidebar' ) ) :
+				dynamic_sidebar( 'header-ad-sidebar' );
 			else :
 				?>
 				<div class="news-header-banner-placeholder" aria-label="<?php esc_attr_e( 'Advertisement Area', 'hasibshah-news' ); ?>">
