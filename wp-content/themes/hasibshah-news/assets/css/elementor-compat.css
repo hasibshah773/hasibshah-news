@@ -1,0 +1,121 @@
+/**
+ * HasibShah News - Elementor Compatibility Stylesheet
+ *
+ * Provides neutral container resets, z-index harmonization,
+ * editor mode safety guards, and full-width canvas layout support.
+ *
+ * @package HasibShah_News
+ * @since 1.0.0
+ */
+
+/* ==========================================================================
+   1. Full-Width & Builder Container Neutrality
+   ========================================================================== */
+
+/* Full-width templates and Elementor-built pages */
+body.elementor-template-full-width .site-content,
+body.hasibshah-news-built-with-elementor .site-content {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+
+body.elementor-template-full-width .page-main,
+body.hasibshah-news-built-with-elementor .page-main,
+body.elementor-template-full-width .page-container,
+body.hasibshah-news-built-with-elementor .page-container {
+	max-width: 100%;
+	width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+body.elementor-template-full-width .page-entry,
+body.hasibshah-news-built-with-elementor .page-entry {
+	margin-bottom: 0;
+}
+
+body.elementor-template-full-width .entry-content,
+body.hasibshah-news-built-with-elementor .entry-content {
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* Dedicated theme full-width page template */
+.page-fullwidth-main,
+.page-fullwidth-container {
+	width: 100%;
+	max-width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/* ==========================================================================
+   2. Scope Resets for Elementor Flexbox & Grid Containers
+   ========================================================================== */
+
+/* Protect Elementor Flexbox Containers (e-con) from broadsheet grid collision */
+.elementor .e-con,
+.elementor .e-con-boxed,
+.elementor .e-con-full,
+.elementor-section {
+	box-sizing: border-box;
+}
+
+/* Ensure Elementor columns & inner containers inherit proper fluid box model */
+.elementor-column,
+.elementor-column-wrap,
+.elementor-widget-wrap {
+	box-sizing: border-box;
+}
+
+/* Prevent theme default paragraph/list margins from distorting Elementor widgets */
+.elementor-widget p:last-child {
+	margin-bottom: 0;
+}
+
+.elementor-widget ul,
+.elementor-widget ol {
+	padding-left: 0;
+}
+
+/* ==========================================================================
+   3. Z-Index Layering & Editor Interface Harmonization
+   ========================================================================== */
+
+/* Theme sticky header & breaking news ticker stay below Elementor interface */
+.site-header,
+.news-primary-nav,
+.news-ticker-bar {
+	z-index: 99;
+}
+
+/* Elementor Editor panel, navigator, and popup modals must stay on top */
+body.elementor-editor-active .elementor-editor-wrapper,
+#elementor-editor-wrapper,
+.elementor-panel,
+.elementor-modal {
+	z-index: 99999 !important;
+}
+
+/* ==========================================================================
+   4. Editor Mode Safety Guards (Prevents iframe freeze / jitter)
+   ========================================================================== */
+
+/* Pause continuous ticker DOM animation inside the Elementor editor preview */
+body.hasibshah-news-elementor-editor .news-ticker-track,
+body.elementor-editor-active .news-ticker-track {
+	animation-play-state: paused !important;
+}
+
+/* Disable front-end transition delays in editor preview for instant responsive feedback */
+body.hasibshah-news-elementor-editor * {
+	transition-duration: 0.05s !important;
+}
+
+/* Keep sticky header static inside editor preview so it doesn't overlap canvas controls */
+body.hasibshah-news-elementor-editor .news-primary-nav.is-sticky {
+	position: static !important;
+}

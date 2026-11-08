@@ -17,7 +17,9 @@
 	 * to prevent interfering with Elementor canvas panels and controls.
 	 */
 	function isElementorEditor() {
-		return document.body.classList.contains( 'elementor-editor-active' );
+		return document.body.classList.contains( 'elementor-editor-active' ) ||
+			document.body.classList.contains( 'hasibshah-news-elementor-editor' ) ||
+			( typeof window.hasibshahNewsEditorMode !== 'undefined' && window.hasibshahNewsEditorMode.isElementorEditor );
 	}
 
 	/**

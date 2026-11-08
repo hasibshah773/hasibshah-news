@@ -87,6 +87,9 @@ if ( ! function_exists( 'hasibshah_news_setup' ) ) :
 		// Add support for wide and full alignment in Gutenberg blocks.
 		add_theme_support( 'align-wide' );
 
+		// Add support for core block visual styles.
+		add_theme_support( 'wp-block-styles' );
+
 		// Enable editor styles so Gutenberg matches front-end typography.
 		add_theme_support( 'editor-styles' );
 		add_editor_style( 'assets/css/editor-style.css' );

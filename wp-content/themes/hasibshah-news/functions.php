@@ -38,3 +38,9 @@ require_once HASIBSHAH_NEWS_DIR . '/inc/core/template-tags.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/editorial/bangla-date.php';
 require_once HASIBSHAH_NEWS_DIR . '/inc/editorial/news-queries.php';
 
+/**
+ * Load Compatibility Modules (Elementor & Gutenberg)
+ */
+require_once HASIBSHAH_NEWS_DIR . '/inc/compatibility/elementor.php';
+require_once HASIBSHAH_NEWS_DIR . '/inc/compatibility/gutenberg.php';
+
