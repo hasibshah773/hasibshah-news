@@ -74,11 +74,11 @@ $opinion_query = hasibshah_news_get_section_posts( $opinion_args, 'opinion_secti
 								?>
 							</div>
 							<div class="author-info">
-								<h4 class="author-name">
+								<p class="author-name">
 									<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>">
 										<?php echo esc_html( get_the_author() ); ?>
 									</a>
-								</h4>
+								</p>
 								<span class="author-designation"><?php esc_html_e( 'কলামিস্ট ও লেখক', 'hasibshah-news' ); ?></span>
 							</div>
 						</div><!-- .opinion-card-header -->

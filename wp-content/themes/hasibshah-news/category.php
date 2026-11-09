@@ -96,8 +96,8 @@ if ( $hasibshah_news_cat instanceof WP_Term ) {
 						<ul class="subnav-list">
 							<?php foreach ( $hasibshah_news_subcats as $hasibshah_news_sub ) : ?>
 								<?php $hasibshah_news_is_active = ( $hasibshah_news_cat instanceof WP_Term && $hasibshah_news_cat->term_id === $hasibshah_news_sub->term_id ); ?>
-								<li class="subnav-item<?php echo $hasibshah_news_is_active ? ' is-active' : ''; ?>">
-									<a href="<?php echo esc_url( get_category_link( $hasibshah_news_sub->term_id ) ); ?>"<?php echo $hasibshah_news_is_active ? ' aria-current="page"' : ''; ?>>
+								<li class="subnav-item<?php if ( $hasibshah_news_is_active ) : ?> is-active<?php endif; ?>">
+									<a href="<?php echo esc_url( get_category_link( $hasibshah_news_sub->term_id ) ); ?>"<?php if ( $hasibshah_news_is_active ) : ?> aria-current="page"<?php endif; ?>>
 										<?php echo esc_html( $hasibshah_news_sub->name ); ?>
 									</a>
 								</li>

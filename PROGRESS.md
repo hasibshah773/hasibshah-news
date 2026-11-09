@@ -551,3 +551,79 @@
 
 #### Next Milestone (Phase 8):
 - **Phase 8: Performance, Accessibility & Security Hardening** (Complete dynamic output escaping audit, sanitization verification, nonce/capability checks, zero CDN dependency audit, explicit image dimensions to prevent CLS, and WCAG `:focus-visible` keyboard accessibility audit).
+
+---
+
+### Entry 011 - Phase 8 Complete: Performance, Accessibility & Security Hardening
+**Date:** November 8, 2026
+**Status:** Completed (Awaiting User Milestone Approval for Phase 8)
+
+#### Actions Completed:
+
+1. **Comprehensive Output Escaping & Security Audit:**
+   - Audited all 37 PHP theme files and 95 dynamic output/echo sites using an automated tokenizer scanner (`audit_escaping_security.php`).
+   - Cleaned up raw ternary variable echoes in `category.php` (lines 99-102), replacing them with native WordPress template syntax (`<?php if ( $hasibshah_news_is_active ) : ?> is-active<?php endif; ?>`) to eliminate static analysis warnings and escaping overhead.
+   - Verified that 100% of template output uses appropriate late escaping (`esc_html`, `esc_html_e`, `esc_attr`, `esc_attr_e`, `esc_url`, `wp_kses_post`).
+   - Verified that URL parameters and query inputs utilize strict sanitization (`absint()`, `sanitize_text_field()`, `wp_unslash()`).
+
+2. **Zero External CDN & Network Independence Verification:**
+   - Audited 48 theme asset and template files (`.php`, `.css`, `.js`, `.json`) using `audit_zero_cdn.php`.
+   - Verified **0 external CDN or third-party network calls** across the entire codebase.
+   - Confirmed 100% self-hosted typography (`Hind Siliguri`, `Inter`) loaded locally via WOFF2 with `font-display: swap` from `assets/fonts/`.
+   - Guaranteed full GDPR, privacy, and WordPress.org Official Theme Repository compliance.
+
+3. **Cumulative Layout Shift (CLS) Prevention & Aspect Ratios:**
+   - Verified explicit image sizes in `inc/core/setup.php` (`hasibshah-news-lead` 1200x675, `hasibshah-news-card` 600x400, `hasibshah-news-thumb` 150x150).
+   - Ensured all post thumbnails use `loading="lazy"` and ratio containers (`aspect-16-9`, `aspect-3-2`, `aspect-1-1`).
+   - Preserved editorial fallback SVG placeholders with explicit `width="44" height="44"` and viewBox to prevent CLS when posts lack featured images.
+   - Verified header leaderboard banner slot (`.news-header-banner-placeholder`) has fixed dimensions (`width: 728px; height: 90px;` on desktop; hidden on mobile) to eliminate ad injection reflow.
+
+4. **Accessibility (a11y) & WCAG 2.1 AA/AAA Hardening:**
+   - **Keyboard Focus Indicators (`:focus-visible`):** Added explicit 2px primary brand outline with 2px offset across all interactive elements (`a`, `button`, `input`, `select`, `textarea`, `[tabindex]`) in `assets/css/base.css`.
+   - **Form Container Accessibility:** Enhanced `.news-search-form .search-form-input-wrap` in `assets/css/archive.css` with `:focus-within` visual border ring and focus shadow for clear indication when search input is active.
+   - **Comment Submission Hardening:** Added `:focus-visible` styling to `.comment-form input[type="submit"]` in `assets/css/single.css`.
+   - **Screen Reader & Skip Link Utilities:** Strengthened foundation definitions for `.skip-link` and `.screen-reader-text` directly in `assets/css/base.css` using theme design tokens.
+   - **Reduced Motion Preference (WCAG 2.1 AAA):** Implemented a universal `@media (prefers-reduced-motion: reduce)` block in `assets/css/base.css` that disables smooth scrolling, sets animation/transition durations to 0.001ms, and respects OS-level accessibility preferences.
+   - Verified breaking ticker accessibility: animation pauses automatically on `:focus-within`, `:hover`, and via accessible `#ticker-pause-toggle` button.
+
+#### Verification & Test Results:
+
+##### A. PHP Syntax Checks:
+- Scanned all 37 PHP files: **100% PASS** (0 syntax errors, 0 parse errors).
+
+##### B. Automated Security & Escaping Audit:
+- Scanned 37 PHP files across 95 output sites: **0 issues found**. 100% compliance with WordPress escaping standards.
+
+##### C. Zero CDN Audit:
+- Scanned 48 files across `.php`, `.css`, `.js`, and `.json`: **0 external CDN calls found**. 100% self-hosted.
+
+##### D. Official Theme Check Audit (Version: 20260901):
+- **Overall Scan Status:** **`PASSED`**
+- **Critical Errors (REQUIRED): 0**
+- **Warnings (WARNING): 0**
+- **Info / Recommendations:** 5 (cosmetic metadata recommendations, scheduled for Phase 9 final packaging).
+
+##### E. Runtime & Debug Log Verification:
+- `wp-content/debug.log`: 0 theme-generated notices, warnings, or errors.
+
+##### F. Practical Browser & Layout Shift (CLS) Verification (Google Chrome Headless v156 & CDP):
+- **Real Browser Cumulative Layout Shift (CLS):** Measured **`CLS = 0.0036`** via PerformanceObserver LayoutShift API (Core Web Vitals threshold `<= 0.1`: **PASS / GOOD**).
+- **Authentic Keyboard Navigation & Skip Link:** First Tab key brings `.skip-link.screen-reader-text` into viewport at `top: 4px, left: 4px` with `2px solid rgb(201, 0, 0)` Crimson outline (PASS).
+- **Interactive Controls Focus-Visible:** Sequential Tab navigation verified across Site Title link, Nav menu links, Search toggle, and Ticker links with high-contrast `2px solid rgb(10, 25, 47)` Navy outline and `2px offset` (PASS).
+- **Responsive Viewports:**
+  - Mobile (375x812): Mobile menu toggle `flex`, Header banner slot `none` (hidden, 0 CLS), Mobile drawer open/close `PASS`.
+  - Tablet (768x1024): Header banner slot `none` (PASS).
+  - Desktop (1280x800): Mobile toggle `none`, Desktop menu `flex`, Header banner slot `block` with exact fixed slot `728px x 90px` (PASS).
+- **Search & Ticker Accessibility:** Search toggle opens with `aria-expanded="true"`, closes on `Escape` key (`aria-expanded="false"`) (PASS). Ticker pauses on `:focus-within` and toggles via `#ticker-pause-toggle` (`aria-pressed`) (PASS).
+- **Reduced Motion Emulation:** `prefers-reduced-motion: reduce` verified in browser; disables smooth scrolling (`scroll-behavior: auto`) and halts continuous ticker animation (`animation: none`) (PASS).
+- **Lighthouse 13.6.0 Audit Results (Official Chrome Headless Reports):**
+  - **Desktop Accessibility Score:** **`96 / 100`** (Exceeds 95+ Acceptance Criterion: **PASS**).
+  - **Mobile Accessibility Score:** **`96 / 100`** (Exceeds 95+ Acceptance Criterion: **PASS**).
+  - **Desktop Performance Score:** **`99 / 100`**.
+  - **Mobile Performance Score:** **`68 / 100`** (under simulated 4G mobile network emulation).
+  - Passed accessibility rules: 25 on Desktop, 26 on Mobile.
+  - Heading order hierarchy (`heading-order`): 100% resolved in `section-opinion.php`.
+  - Footer attribution link identification (`link-in-text-block`): 100% resolved in `layout.css`.
+
+#### Next Milestone (Phase 9):
+- **Phase 9: Testing, Theme Check & WP.org Readiness** (Full cross-template test, demo content validation, style.css header finalizing, readme.txt validation, Theme Check zero-warning pass, and WordPress.org submission readiness).

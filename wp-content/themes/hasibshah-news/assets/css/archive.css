@@ -559,6 +559,12 @@
 	border-radius: var(--radius-sm);
 	overflow: hidden;
 	background-color: var(--color-bg-body);
+	transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.news-search-form .search-form-input-wrap:focus-within {
+	border-color: var(--color-brand-accent);
+	box-shadow: 0 0 0 3px rgba(201, 0, 0, 0.2);
 }
 
 .news-search-form .search-field {
