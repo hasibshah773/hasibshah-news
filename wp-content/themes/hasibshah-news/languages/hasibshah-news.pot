@@ -1,0 +1,744 @@
+# Copyright (C) 2026 Hasib Shah
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: HasibShah News 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/hasibshah-news\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-10T03:26:17+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: hasibshah-news\n"
+
+#. Theme Name of the theme
+#: style.css
+msgid "HasibShah News"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/hasibshah773/hasibshah-news"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "HasibShah News is a modern, high-performance, and responsive WordPress theme designed specifically for Bangladeshi news portals, magazines, and digital publications. Features bilingual Bangla and English editorial typography, Gutenberg block styling via theme.json, and optional Elementor compatibility."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "Hasib Shah"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://github.com/hasibshah773"
+msgstr ""
+
+#: 404.php:30
+msgid "পৃষ্ঠাটি খুঁজে পাওয়া যায়নি"
+msgstr ""
+
+#: 404.php:33
+msgid "Page Not Found"
+msgstr ""
+
+#: 404.php:39
+msgid "আপনি যে সংবাদ বা পাতাটি খুঁজছেন তা হয়তো সরানো হয়েছে, নাম পরিবর্তন করা হয়েছে অথবা সাময়িকভাবে অনুপলব্ধ রয়েছে। নিচের অনুসন্ধান বাক্স ব্যবহার করে কাঙ্ক্ষিত সংবাদটি খুঁজে দেখতে পারেন:"
+msgstr ""
+
+#: 404.php:52
+msgid "প্রচ্ছদে ফিরে যান / Return to Homepage"
+msgstr ""
+
+#: 404.php:68
+msgid "জনপ্রিয় বিভাগসমূহ:"
+msgstr ""
+
+#: 404.php:99
+msgid "সর্বশেষ শীর্ষ সংবাদসমূহ / Latest Top Stories"
+msgstr ""
+
+#: archive.php:22
+msgid "সংবাদ আর্কাইভ"
+msgstr ""
+
+#: archive.php:56
+#: author.php:130
+#: category.php:130
+#: index.php:49
+#: search.php:73
+msgid "পূর্ববর্তী"
+msgstr ""
+
+#: archive.php:60
+#: author.php:134
+#: category.php:134
+#: index.php:53
+#: search.php:77
+msgid "পরবর্তী"
+msgstr ""
+
+#: archive.php:62
+#: author.php:136
+#: category.php:136
+#: index.php:55
+#: search.php:79
+msgid "পৃষ্ঠা"
+msgstr ""
+
+#: author.php:41
+msgid "সাংবাদিক ও লেখক পরিচিতি"
+msgstr ""
+
+#: author.php:51
+msgid "সাংবাদিক ও প্রতিবেদক / Staff Reporter"
+msgstr ""
+
+#. translators: %s: number of published posts
+#: author.php:73
+#, php-format
+msgid "মোট সংবাদ: %s টি"
+msgstr ""
+
+#. translators: %s: author name
+#: author.php:106
+#, php-format
+msgid "%s-এর প্রকাশিত সংবাদ ও প্রতিবেদন"
+msgstr ""
+
+#: category.php:64
+msgid "বিভাগীয় সংবাদ"
+msgstr ""
+
+#: category.php:93
+msgid "Subcategories"
+msgstr ""
+
+#: category.php:95
+msgid "উপ-বিভাগ / জেলা:"
+msgstr ""
+
+#. translators: 1: title.
+#: comments.php:37
+#, php-format
+msgid "One thought on &ldquo;%1$s&rdquo;"
+msgstr ""
+
+#. translators: 1: comment count number, 2: title.
+#: comments.php:43
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:71
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:22
+msgid "https://wordpress.org/"
+msgstr ""
+
+#. translators: %s: CMS name, i.e. WordPress.
+#: footer.php:25
+#, php-format
+msgid "Proudly powered by %s"
+msgstr ""
+
+#. translators: 1: Theme name, 2: Theme author.
+#: footer.php:31
+#, php-format
+msgid "Theme: %1$s by %2$s."
+msgstr ""
+
+#: header.php:28
+msgid "Skip to content"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:26
+msgid "HasibShah News এডিটোরিয়াল"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:39
+msgid "জরুরি সংবাদ অ্যালার্ট / Breaking News Alert"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:40
+msgid "High-priority editorial news callout banner with crimson badge."
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:65
+msgid "সম্পাদকীয় উক্তি ও কলামিস্ট কোট / Opinion & Columnist Pullquote"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:66
+msgid "Broadsheet pullquote box with columnist portrait slot and attribution."
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:88
+msgid "৩-কলাম সংবাদ গ্রিড / 3-Card Story Grid"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:89
+msgid "3-column responsive broadsheet news story card layout."
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:157
+msgid "Broadsheet Quote / সংবাদপত্রের উক্তি"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:166
+msgid "Lead Paragraph / প্রারম্ভিক অনুচ্ছেদ"
+msgstr ""
+
+#: inc/compatibility/gutenberg.php:175
+msgid "News Bullets / সংবাদ বুলেট"
+msgstr ""
+
+#: inc/core/setup.php:47
+msgid "Primary Menu"
+msgstr ""
+
+#: inc/core/setup.php:48
+msgid "Top Bar Menu"
+msgstr ""
+
+#: inc/core/setup.php:49
+msgid "Footer Menu"
+msgstr ""
+
+#: inc/core/setup.php:109
+msgid "Main Editorial Sidebar"
+msgstr ""
+
+#: inc/core/setup.php:111
+msgid "Add widgets here to appear in your sidebar on archives, posts, and search."
+msgstr ""
+
+#: inc/core/setup.php:121
+msgid "Header Ad Banner"
+msgstr ""
+
+#: inc/core/setup.php:123
+msgid "Add 728x90 leaderboard banner widget here."
+msgstr ""
+
+#: inc/core/setup.php:133
+msgid "Footer Column 1"
+msgstr ""
+
+#: inc/core/setup.php:135
+msgid "Add widgets here to appear in the first footer column."
+msgstr ""
+
+#: inc/core/setup.php:145
+msgid "Footer Column 2"
+msgstr ""
+
+#: inc/core/setup.php:147
+msgid "Add widgets here to appear in the second footer column."
+msgstr ""
+
+#: inc/core/setup.php:157
+msgid "Footer Column 3"
+msgstr ""
+
+#: inc/core/setup.php:159
+msgid "Add widgets here to appear in the third footer column."
+msgstr ""
+
+#. translators: %s: post author.
+#: inc/core/template-tags.php:42
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#. translators: %s: number of minutes
+#: inc/editorial/news-queries.php:128
+#, php-format
+msgid "%s মিনিট আগে"
+msgstr ""
+
+#. translators: %s: number of hours
+#: inc/editorial/news-queries.php:136
+#, php-format
+msgid "%s ঘণ্টা আগে"
+msgstr ""
+
+#. translators: %s: number of days
+#: inc/editorial/news-queries.php:144
+#, php-format
+msgid "%s দিন আগে"
+msgstr ""
+
+#. translators: %s: estimated reading time in minutes
+#: inc/editorial/news-queries.php:173
+#, php-format
+msgid "%s মিনিট পড়ার সময়"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Full Width (No Sidebar)"
+msgstr ""
+
+#: search.php:26
+msgid "অনুসন্ধানের ফলাফল"
+msgstr ""
+
+#. translators: %s: search query
+#: search.php:32
+#, php-format
+msgid "&ldquo;%s&rdquo; সম্পর্কিত ফলাফল"
+msgstr ""
+
+#. translators: %s: total count of results found
+#: search.php:42
+#, php-format
+msgid "মোট %s টি সংবাদ পাওয়া গেছে"
+msgstr ""
+
+#: searchform.php:18
+msgid "অনুসন্ধান করুন / Search for:"
+msgstr ""
+
+#: searchform.php:25
+msgid "সংবাদ খুঁজুন... / Search news..."
+msgstr ""
+
+#: searchform.php:30
+msgid "Search"
+msgstr ""
+
+#: searchform.php:35
+msgid "অনুসন্ধান"
+msgstr ""
+
+#: sidebar.php:23
+msgid "Editorial Sidebar"
+msgstr ""
+
+#: single.php:43
+msgid "&larr; পূর্ববর্তী সংবাদ"
+msgstr ""
+
+#: single.php:44
+msgid "পরবর্তী সংবাদ &rarr;"
+msgstr ""
+
+#. translators: %s: search query string
+#: template-parts/content/content-none.php:31
+#, php-format
+msgid "কোনো ফলাফল পাওয়া যায়নি: &ldquo;%s&rdquo;"
+msgstr ""
+
+#: template-parts/content/content-none.php:35
+msgid "এই বিভাগে কোনো সংবাদ পাওয়া যায়নি"
+msgstr ""
+
+#. translators: 1: link to WP admin new post page.
+#: template-parts/content/content-none.php:48
+#, php-format
+msgid "প্রথম সংবাদ প্রকাশ করতে প্রস্তুত? <a href=\"%1$s\">এখানে ক্লিক করে শুরু করুন</a>।"
+msgstr ""
+
+#: template-parts/content/content-none.php:61
+msgid "আপনার কাঙ্ক্ষিত শব্দের সাথে মিলে এমন কোনো প্রতিবেদন বা সংবাদ খুঁজে পাওয়া যায়নি। বানান পরীক্ষা করে অথবা ভিন্ন কোনো শব্দ দিয়ে আবার চেষ্টা করুন।"
+msgstr ""
+
+#: template-parts/content/content-none.php:79
+msgid "জনপ্রিয় বিভাগসমূহ ঘুরে দেখুন:"
+msgstr ""
+
+#: template-parts/content/content-none.php:93
+msgid "দুঃখিত, এই পাতায় প্রদর্শনের মতো কোনো সংবাদ পাওয়া যায়নি। আপনি নিচের অনুসন্ধান বাক্স ব্যবহার করে কাঙ্ক্ষিত সংবাদটি খুঁজতে পারেন:"
+msgstr ""
+
+#: template-parts/content/content-page.php:35
+msgid "Page Navigation"
+msgstr ""
+
+#: template-parts/content/content-page.php:35
+msgid "Pages:"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content/content-page.php:51
+#, php-format
+msgid "Edit <span class=\"screen-reader-text\">%s</span>"
+msgstr ""
+
+#: template-parts/content/content-single.php:62
+msgid "প্রতিবেদক:"
+msgstr ""
+
+#: template-parts/content/content-single.php:79
+msgid "প্রকাশ:"
+msgstr ""
+
+#: template-parts/content/content-single.php:88
+msgid "আপডেট:"
+msgstr ""
+
+#: template-parts/content/content-single.php:109
+msgid "Share this article"
+msgstr ""
+
+#: template-parts/content/content-single.php:110
+msgid "শেয়ার করুন:"
+msgstr ""
+
+#: template-parts/content/content-single.php:114
+msgid "Share on Facebook"
+msgstr ""
+
+#: template-parts/content/content-single.php:120
+msgid "Share on X"
+msgstr ""
+
+#: template-parts/content/content-single.php:126
+msgid "Share on WhatsApp"
+msgstr ""
+
+#: template-parts/content/content-single.php:132
+msgid "Print Article"
+msgstr ""
+
+#. translators: %s: Name of current post. Only visible to screen readers
+#: template-parts/content/content-single.php:167
+#, php-format
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: template-parts/content/content-single.php:181
+msgid "Article Pages"
+msgstr ""
+
+#: template-parts/content/content-single.php:181
+msgid "পৃষ্ঠা:"
+msgstr ""
+
+#: template-parts/content/content-single.php:195
+msgid "বিষয়:"
+msgstr ""
+
+#: template-parts/content/content-single.php:219
+msgid "লেখক পরিচিতি"
+msgstr ""
+
+#. translators: %s: author name
+#: template-parts/content/content-single.php:233
+#, php-format
+msgid "%s হাসিবশাহ নিউজের একজন নিয়মিত লেখক ও সাংবাদিক।"
+msgstr ""
+
+#. translators: %s: author name
+#: template-parts/content/content-single.php:244
+#, php-format
+msgid "%s-এর সব সংবাদ ও কলাম পড়ুন"
+msgstr ""
+
+#: template-parts/content/related-stories.php:53
+msgid "Related Articles"
+msgstr ""
+
+#: template-parts/content/related-stories.php:57
+msgid "সম্পর্কিত সংবাদ"
+msgstr ""
+
+#: template-parts/header/breaking-ticker.php:29
+msgid "Breaking News Ticker"
+msgstr ""
+
+#: template-parts/header/breaking-ticker.php:33
+msgid "ব্রেকিং নিউজ"
+msgstr ""
+
+#: template-parts/header/breaking-ticker.php:56
+msgid "হাসিবশাহ নিউজে স্বাগতম — বস্তুনিষ্ঠ ও সত্যনিষ্ঠ সংবাদ পরিবেশনে আমরা অঙ্গীকারবদ্ধ।"
+msgstr ""
+
+#: template-parts/header/breaking-ticker.php:62
+msgid "Pause Breaking News"
+msgstr ""
+
+#: template-parts/header/breaking-ticker.php:62
+msgid "Pause / Play"
+msgstr ""
+
+#: template-parts/header/masthead.php:61
+msgid "Advertisement Area"
+msgstr ""
+
+#: template-parts/header/masthead.php:62
+msgid "বিজ্ঞাপন স্থান / Header Banner Slot (728x90)"
+msgstr ""
+
+#: template-parts/header/navigation.php:16
+msgid "Main Editorial Navigation"
+msgstr ""
+
+#: template-parts/header/navigation.php:19
+msgid "Open Navigation Menu"
+msgstr ""
+
+#: template-parts/header/navigation.php:23
+msgid "মেনু"
+msgstr ""
+
+#: template-parts/header/navigation.php:27
+msgid "Home"
+msgstr ""
+
+#: template-parts/header/navigation.php:27
+msgid "Homepage"
+msgstr ""
+
+#: template-parts/header/navigation.php:51
+msgid "Search Form"
+msgstr ""
+
+#: template-parts/header/navigation.php:69
+msgid "Mobile Menu"
+msgstr ""
+
+#: template-parts/header/navigation.php:71
+msgid "সকল বিভাগ"
+msgstr ""
+
+#: template-parts/header/navigation.php:72
+msgid "Close Menu"
+msgstr ""
+
+#: template-parts/header/navigation.php:85
+msgid "Mobile Navigation Tree"
+msgstr ""
+
+#: template-parts/header/topbar.php:34
+msgid "ঢাকা সংস্করণ"
+msgstr ""
+
+#: template-parts/header/topbar.php:40
+msgid "Secondary Top Navigation"
+msgstr ""
+
+#: template-parts/news-sections/section-district.php:36
+msgid "District News Section"
+msgstr ""
+
+#: template-parts/news-sections/section-district.php:42
+msgid "সারাদেশ"
+msgstr ""
+
+#: template-parts/news-sections/section-district.php:43
+msgid "বিভাগীয় ও জেলা সংবাদ"
+msgstr ""
+
+#: template-parts/news-sections/section-district.php:47
+msgid "Division filters"
+msgstr ""
+
+#: template-parts/news-sections/section-district.php:96
+msgid "জেলা সংবাদের তথ্য সংগ্রহ করা হচ্ছে..."
+msgstr ""
+
+#: template-parts/news-sections/section-grid.php:24
+msgid "রাজনীতি"
+msgstr ""
+
+#: template-parts/news-sections/section-grid.php:31
+msgid "অর্থনীতি ও বাণিজ্য"
+msgstr ""
+
+#: template-parts/news-sections/section-grid.php:38
+msgid "খেলাধুলা"
+msgstr ""
+
+#: template-parts/news-sections/section-grid.php:46
+msgid "Category News Blocks"
+msgstr ""
+
+#: template-parts/news-sections/section-grid.php:73
+msgid "আরও"
+msgstr ""
+
+#: template-parts/news-sections/section-grid.php:137
+msgid "এই বিভাগের নতুন সংবাদ শীঘ্রই প্রকাশিত হবে।"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:62
+msgid "Hero Lead Stories"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:104
+msgid "বিশেষ প্রতিবেদন"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:105
+msgid "দেশ ও বিদেশের গুরুত্বপূর্ণ সংবাদের জন্য চোখ রাখুন।"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:160
+msgid "শীর্ষ সংবাদ শীঘ্রই প্রকাশিত হবে"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:161
+msgid "হাসিবশাহ নিউজে স্বাগতম। সর্বশেষ এবং বস্তুনিষ্ঠ সংবাদের জন্য আমাদের সাথেই থাকুন।"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:172
+msgid "সর্বশেষ সংবাদ"
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:196
+msgid "আরও খবর প্রকাশের অপেক্ষায়..."
+msgstr ""
+
+#: template-parts/news-sections/section-hero.php:203
+msgid "সব খবর পড়ুন"
+msgstr ""
+
+#: template-parts/news-sections/section-media.php:25
+msgid "Multimedia Video and Photo Gallery"
+msgstr ""
+
+#: template-parts/news-sections/section-media.php:37
+msgid "ভিডিও ও ছবি"
+msgstr ""
+
+#: template-parts/news-sections/section-media.php:38
+msgid "মাল্টিমিডিয়া বিশেষ আয়োজন"
+msgstr ""
+
+#: template-parts/news-sections/section-media.php:65
+msgid "ভিডিও"
+msgstr ""
+
+#: template-parts/news-sections/section-media.php:73
+msgid "ছবি"
+msgstr ""
+
+#: template-parts/news-sections/section-media.php:98
+msgid "মাল্টিমিডিয়া ভিডিও ও ছবির গ্যালারি শীঘ্রই যুক্ত হবে।"
+msgstr ""
+
+#: template-parts/news-sections/section-opinion.php:31
+msgid "Opinion and Editorial Columns"
+msgstr ""
+
+#: template-parts/news-sections/section-opinion.php:43
+msgid "মতামত ও সম্পাদকীয়"
+msgstr ""
+
+#: template-parts/news-sections/section-opinion.php:44
+msgid "মুক্তচিন্তা ও বিশ্লেষণধর্মী কলাম"
+msgstr ""
+
+#: template-parts/news-sections/section-opinion.php:49
+msgid "সব কলাম"
+msgstr ""
+
+#: template-parts/news-sections/section-opinion.php:82
+msgid "কলামিস্ট ও লেখক"
+msgstr ""
+
+#: template-parts/news-sections/section-opinion.php:110
+msgid "সম্পাদকীয় ও কলাম শীঘ্রই প্রকাশিত হবে।"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Editorial Navy"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Breaking Crimson"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "National Green"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Business Blue"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Sports Amber"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Paper Surface"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Ink Black"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Muted Charcoal"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "Border Subtle"
+msgstr ""
+
+#: theme.json
+msgctxt "Color name"
+msgid "White"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Bangla (Hind Siliguri)"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "English (Inter)"
+msgstr ""
+
+#: theme.json
+msgctxt "Font family name"
+msgid "Editorial Serif"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Small"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Medium"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Extra Large"
+msgstr ""
+
+#: theme.json
+msgctxt "Font size name"
+msgid "Lead Headline"
+msgstr ""
