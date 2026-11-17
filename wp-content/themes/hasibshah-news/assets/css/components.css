@@ -622,6 +622,64 @@
 	display: inline-flex;
 }
 
+/* Opinion Cards Responsive Grid System (Bug 02 Fix - OSR-F01) */
+.opinion-cards-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--grid-gutter);
+	width: 100%;
+}
+
+/* Tablet Breakpoint (>= 640px) */
+@media (min-width: 640px) {
+	.opinion-cards-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.opinion-cards-grid.opinion-grid-count-1 {
+		grid-template-columns: 1fr;
+		max-width: 540px;
+		margin-inline: auto;
+	}
+}
+
+/* Desktop Breakpoints (>= 1024px) */
+@media (min-width: 1024px) {
+	/* Universal fallback for dynamic counts */
+	.opinion-cards-grid {
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	}
+
+	/* 1 Card: centered broadsheet card */
+	.opinion-cards-grid.opinion-grid-count-1 {
+		grid-template-columns: 1fr;
+		max-width: 580px;
+		margin-inline: auto;
+	}
+
+	/* 2 Cards: 2 equal balanced columns */
+	.opinion-cards-grid.opinion-grid-count-2 {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 900px;
+		margin-inline: auto;
+	}
+
+	/* 3 Cards: 3 equal balanced columns across full container */
+	.opinion-cards-grid.opinion-grid-count-3 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	/* 4 Cards: standard 4 columns (broadsheet editorial strip) */
+	.opinion-cards-grid.opinion-grid-count-4 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	/* 6 Cards: 3 columns x 2 rows (perfect geometric symmetry) */
+	.opinion-cards-grid.opinion-grid-count-6 {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
 .news-card-opinion {
 	background-color: var(--color-bg-body);
 	border: 1px solid var(--color-border-subtle);

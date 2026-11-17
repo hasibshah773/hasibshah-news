@@ -600,6 +600,23 @@
 	line-height: 1.6;
 	color: var(--color-text-main);
 	margin-bottom: var(--space-2);
+	/* Defensive text-wrapping: prevent horizontal overflow from long unbroken URLs & strings */
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+	word-break: normal;
+}
+
+.comment-content p,
+.comment-content a {
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+}
+
+.comment-content pre,
+.comment-content code {
+	white-space: pre-wrap;
+	overflow-wrap: anywhere;
+	word-break: break-word;
 }
 
 .reply a {

@@ -669,3 +669,42 @@
 - **Generated Theme Files:** `languages/hasibshah-news.pot`
 - **Project Progress File:** `PROGRESS.md`
 - **WordPress.org Readiness:** 100% Ready for official theme repository submission.
+
+---
+
+### Entry 013 - Bug Fixing, Full Regression QA & Final Refinements Completed
+**Date:** November 16, 2026  
+**Status:** Completed & Independently Verified (Awaiting User Final Approval)
+
+#### Actions Completed:
+1. **Bug Fix 01 — Navigation Fallback & Submenu (NBR-F03):**
+   - Updated `hasibshah_news_nav_fallback()` in `inc/core/template-tags.php` to accept dynamic `$args`.
+   - Guaranteed unique DOM IDs (`#primary-menu`, `#mobile-primary-menu`) across desktop and mobile.
+   - Enhanced `assets/css/header.css` to support WordPress core fallback `.children` menus and active states.
+2. **Bug 02 — Opinion Section Responsive Grid (OSR-F01):**
+   - Replaced static 12-column sub-spans in `template-parts/news-sections/section-opinion.php` with dynamic count classes (`.opinion-grid-count-{$count}`).
+   - Added adaptive CSS Grid rules in `assets/css/components.css` supporting 1, 2, 3, 4, and 6 opinion cards with zero empty container void.
+3. **Bug 03 — Long Comment Text Overflow:**
+   - Applied defensive text-wrapping in `assets/css/single.css` (`overflow-wrap: anywhere; word-wrap: break-word; word-break: normal;`) across `.comment-content`, child paragraphs, links, and code blocks.
+4. **Full Regression QA Suite (Steps 1–4):**
+   - Executed multi-page functional routing tests (`REGRESSION-QA-STEP-01.md`).
+   - Captured 23 responsive viewport screenshots across 7 viewports (`REGRESSION-QA-STEP-02.md`).
+   - Executed WCAG 2.1 Level AA Accessibility Audit (`ACCESSIBILITY-AUDIT-STEP-03.md`).
+   - Executed Web Performance Audit (`PERFORMANCE-AUDIT-STEP-03.md`).
+   - Published Final Consolidated Report (`FINAL-REGRESSION-QA-REPORT.md`).
+5. **Final Refinements Completed:**
+   - **`REG-STEP01-01` (Search Empty State Overflow):** Added `overflow-wrap: anywhere;` and grid containment (`min-width: 0;`) in `assets/css/archive.css`. Overflow dropped from +40px to 0px across 320px, 375px, and 430px screens.
+   - **`A11Y-01` (Single Post Heading Hierarchy):** Replaced `<h3 class="author-bio-name">` with `<p class="author-bio-name">` in `template-parts/content/content-single.php`, eliminating heading level skips and establishing strict `H1 -> H2 -> H3` semantic order.
+   - Documented in `FINAL-REFINEMENTS-REPORT.md`.
+
+#### Verification Summary:
+- **Modified Theme Files:**
+  - `assets/css/archive.css` (Search text wrapping)
+  - `template-parts/content/content-single.php` (Semantic author bio element)
+  - `assets/css/components.css` (Bug 02)
+  - `assets/css/header.css` (Bug 01)
+  - `assets/css/single.css` (Bug 03)
+  - `inc/core/template-tags.php` (Bug 01)
+  - `template-parts/news-sections/section-opinion.php` (Bug 02)
+- **Zero Console Errors; Zero Horizontal Overflow; Zero Missing Alt Attributes; Zero Missing Form Labels.**
+- **100% Ready for Final Master Prompt 03 Professional Audit.**

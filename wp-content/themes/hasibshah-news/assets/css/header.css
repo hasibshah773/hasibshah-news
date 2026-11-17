@@ -254,13 +254,16 @@
 
 .news-primary-nav-menu > li:hover > a,
 .news-primary-nav-menu > li > a:focus,
-.news-primary-nav-menu > .current-menu-item > a {
+.news-primary-nav-menu > .current-menu-item > a,
+.news-primary-nav-menu > .current_page_item > a,
+.news-primary-nav-menu > .current_page_ancestor > a {
 	background-color: var(--color-brand-accent);
 	color: var(--color-text-inverse);
 }
 
-/* Sub-menus / Dropdowns */
-.news-primary-nav-menu ul.sub-menu {
+/* Sub-menus / Dropdowns (Supports custom menus and fallback wp_list_pages) */
+.news-primary-nav-menu ul.sub-menu,
+.news-primary-nav-menu ul.children {
 	position: absolute;
 	top: 100%;
 	left: 0;
@@ -276,12 +279,16 @@
 }
 
 .news-primary-nav-menu li:hover > ul.sub-menu,
+.news-primary-nav-menu li:hover > ul.children,
 .news-primary-nav-menu li:focus-within > ul.sub-menu,
-.news-primary-nav-menu li.focus > ul.sub-menu {
+.news-primary-nav-menu li:focus-within > ul.children,
+.news-primary-nav-menu li.focus > ul.sub-menu,
+.news-primary-nav-menu li.focus > ul.children {
 	display: block;
 }
 
-.news-primary-nav-menu ul.sub-menu a {
+.news-primary-nav-menu ul.sub-menu a,
+.news-primary-nav-menu ul.children a {
 	display: block;
 	padding: var(--space-2) var(--space-4);
 	color: var(--color-text-main);
@@ -292,7 +299,9 @@
 }
 
 .news-primary-nav-menu ul.sub-menu a:hover,
-.news-primary-nav-menu ul.sub-menu a:focus {
+.news-primary-nav-menu ul.sub-menu a:focus,
+.news-primary-nav-menu ul.children a:hover,
+.news-primary-nav-menu ul.children a:focus {
 	background-color: var(--color-bg-surface-alt);
 	color: var(--color-brand-accent);
 }
@@ -493,7 +502,8 @@ body.mobile-drawer-open {
 	font-size: var(--font-size-base);
 }
 
-.mobile-nav-tree ul.sub-menu {
+.mobile-nav-tree ul.sub-menu,
+.mobile-nav-tree ul.children {
 	padding-left: var(--space-4);
 	background-color: var(--color-bg-surface);
 }

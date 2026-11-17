@@ -217,11 +217,11 @@ $thumb_caption    = $thumb_id ? wp_get_attachment_caption( $thumb_id ) : '';
 			<div class="author-bio-content">
 				<div class="author-bio-header">
 					<span class="author-bio-label"><?php esc_html_e( 'লেখক পরিচিতি', 'hasibshah-news' ); ?></span>
-					<h3 class="author-bio-name">
+					<p class="author-bio-name">
 						<a href="<?php echo esc_url( get_author_posts_url( $author_id ) ); ?>">
 							<?php echo esc_html( get_the_author() ); ?>
 						</a>
-					</h3>
+					</p>
 				</div>
 				<?php if ( ! empty( $author_desc ) ) : ?>
 					<p class="author-bio-description"><?php echo esc_html( $author_desc ); ?></p>

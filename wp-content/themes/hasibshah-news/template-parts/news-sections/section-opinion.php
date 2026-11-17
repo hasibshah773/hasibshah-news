@@ -52,15 +52,18 @@ $opinion_query = hasibshah_news_get_section_posts( $opinion_args, 'opinion_secti
 			</div>
 		</div><!-- .section-heading-bar -->
 
-		<!-- 4-Column Opinion Cards Grid -->
-		<div class="opinion-cards-grid news-grid-12">
+		<!-- Responsive Opinion Cards Grid -->
+		<?php
+		$opinion_count = $opinion_query->have_posts() ? $opinion_query->post_count : 0;
+		?>
+		<div class="opinion-cards-grid opinion-grid-count-<?php echo esc_attr( $opinion_count ); ?>">
 			<?php if ( $opinion_query->have_posts() ) : ?>
 				<?php
 				while ( $opinion_query->have_posts() ) :
 					$opinion_query->the_post();
 					$author_id = get_the_author_meta( 'ID' );
 					?>
-					<article id="opinion-post-<?php the_ID(); ?>" <?php post_class( 'news-card news-card-opinion col-span-12 col-span-md-6 col-span-lg-3' ); ?>>
+					<article id="opinion-post-<?php the_ID(); ?>" <?php post_class( 'news-card news-card-opinion' ); ?>>
 						<div class="opinion-card-header">
 							<div class="author-avatar-wrap">
 								<?php

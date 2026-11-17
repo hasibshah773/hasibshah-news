@@ -61,6 +61,13 @@
 	gap: var(--space-3);
 }
 
+.search-title {
+	display: block;
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+	word-break: normal;
+}
+
 .archive-description,
 .category-description {
 	font-size: var(--font-size-base);
@@ -439,6 +446,10 @@
    4. Empty State / Nothing Found (content-none.php)
    ========================================================================== */
 
+.editorial-main {
+	min-width: 0;
+}
+
 .editorial-empty-state {
 	padding: var(--space-10) var(--space-6);
 	background-color: var(--color-bg-surface);
@@ -446,6 +457,9 @@
 	border-radius: var(--radius-md);
 	text-align: center;
 	margin: var(--space-6) 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
 }
 
 .empty-state-icon {
@@ -461,6 +475,15 @@
 	font-weight: 700;
 	color: var(--color-text-main);
 	margin: 0 0 var(--space-3);
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+	word-break: normal;
+}
+
+.empty-state-title span {
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+	word-break: normal;
 }
 
 .empty-state-text {
@@ -533,6 +556,9 @@
 
 .search-query-highlight {
 	color: var(--color-brand-accent);
+	overflow-wrap: anywhere;
+	word-wrap: break-word;
+	word-break: normal;
 }
 
 .search-count-badge {

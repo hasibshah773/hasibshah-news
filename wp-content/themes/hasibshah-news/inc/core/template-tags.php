@@ -50,17 +50,39 @@ endif;
 if ( ! function_exists( 'hasibshah_news_nav_fallback' ) ) :
 	/**
 	 * Fallback menu callback when no primary menu is assigned.
+	 *
+	 * Dynamically accepts wp_nav_menu $args to output distinct IDs
+	 * and classes for desktop and mobile navigation containers, preventing
+	 * duplicate DOM IDs and ensuring consistent responsive styling.
+	 *
+	 * @param array|object $args Arguments from wp_nav_menu().
+	 * @return string|void Echoes or returns navigation markup.
 	 */
-	function hasibshah_news_nav_fallback() {
-		echo '<ul id="primary-menu" class="news-primary-nav-menu">';
-		wp_list_pages(
+	function hasibshah_news_nav_fallback( $args = array() ) {
+		$menu_args = is_object( $args ) ? (array) $args : (array) $args;
+
+		$menu_id    = ! empty( $menu_args['menu_id'] ) ? $menu_args['menu_id'] : 'primary-menu';
+		$menu_class = ! empty( $menu_args['menu_class'] ) ? $menu_args['menu_class'] : 'news-primary-nav-menu';
+		$echo       = isset( $menu_args['echo'] ) ? (bool) $menu_args['echo'] : true;
+
+		$pages_output = wp_list_pages(
 			array(
 				'title_li' => '',
 				'depth'    => 2,
 				'number'   => 8,
+				'echo'     => false,
 			)
 		);
-		echo '</ul>';
+
+		$output  = '<ul id="' . esc_attr( $menu_id ) . '" class="' . esc_attr( $menu_class ) . '">';
+		$output .= $pages_output;
+		$output .= '</ul>';
+
+		if ( $echo ) {
+			echo $output; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		} else {
+			return $output;
+		}
 	}
 endif;
 
