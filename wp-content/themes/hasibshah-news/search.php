@@ -82,7 +82,13 @@ $hasibshah_news_bn_count      = function_exists( 'hasibshah_news_to_bangla_numbe
 
 				else :
 
-					get_template_part( 'template-parts/content/content', 'none' );
+					get_template_part(
+						'template-parts/content/content',
+						'none',
+						array(
+							'heading_tag' => 'h2',
+						)
+					);
 
 				endif;
 				?>

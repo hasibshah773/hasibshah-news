@@ -11,6 +11,14 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
+
+// Use a subordinate heading when the parent template already outputs an H1.
+$hasibshah_news_default_tag = ( is_search() || is_archive() || is_home() ) ? 'h2' : 'h1';
+$hasibshah_news_heading_tag = isset( $args['heading_tag'] ) && in_array( $args['heading_tag'], array( 'h1', 'h2', 'h3' ), true )
+	? $args['heading_tag']
+	: $hasibshah_news_default_tag;
+
+$hasibshah_news_sub_heading_tag = 'h1' === $hasibshah_news_heading_tag ? 'h2' : 'h3';
 ?>
 
 <section class="no-results not-found editorial-empty-state">
@@ -23,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</svg>
 		</div>
 
-		<h1 class="page-title empty-state-title">
+		<<?php echo tag_escape( $hasibshah_news_heading_tag ); ?> class="page-title empty-state-title">
 			<?php
 			if ( is_search() ) :
 				printf(
@@ -35,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				esc_html_e( 'এই বিভাগে কোনো সংবাদ পাওয়া যায়নি', 'hasibshah-news' );
 			endif;
 			?>
-		</h1>
+		</<?php echo tag_escape( $hasibshah_news_heading_tag ); ?>>
 	</header><!-- .page-header -->
 
 	<div class="page-content empty-state-content">
@@ -76,7 +84,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			if ( ! empty( $categories ) ) :
 				?>
 				<div class="empty-state-suggestions">
-					<h2 class="suggestions-heading"><?php esc_html_e( 'জনপ্রিয় বিভাগসমূহ ঘুরে দেখুন:', 'hasibshah-news' ); ?></h2>
+					<<?php echo tag_escape( $hasibshah_news_sub_heading_tag ); ?> class="suggestions-heading"><?php esc_html_e( 'জনপ্রিয় বিভাগসমূহ ঘুরে দেখুন:', 'hasibshah-news' ); ?></<?php echo tag_escape( $hasibshah_news_sub_heading_tag ); ?>>
 					<div class="suggestions-chips">
 						<?php foreach ( $categories as $category ) : ?>
 							<a href="<?php echo esc_url( get_category_link( $category->term_id ) ); ?>" class="suggestion-chip">

@@ -82,9 +82,9 @@ $latest_query = hasibshah_news_get_section_posts(
 								</div><!-- .card-media -->
 
 								<div class="card-body">
-									<h3 class="card-title news-card-title-clamp-2">
+									<h2 class="card-title news-card-title-clamp-2">
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-									</h3>
+									</h2>
 									<div class="card-meta">
 										<span class="meta-time">
 											<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -102,7 +102,7 @@ $latest_query = hasibshah_news_get_section_posts(
 						<div class="news-card news-card-secondary card-placeholder">
 							<div class="card-body">
 								<span class="news-category-badge badge-cat-default"><?php esc_html_e( 'বিশেষ প্রতিবেদন', 'hasibshah-news' ); ?></span>
-								<h3 class="card-title"><?php esc_html_e( 'দেশ ও বিদেশের গুরুত্বপূর্ণ সংবাদের জন্য চোখ রাখুন।', 'hasibshah-news' ); ?></h3>
+								<h2 class="card-title"><?php esc_html_e( 'দেশ ও বিদেশের গুরুত্বপূর্ণ সংবাদের জন্য চোখ রাখুন।', 'hasibshah-news' ); ?></h2>
 							</div>
 						</div>
 					<?php endif; ?>
@@ -169,7 +169,7 @@ $latest_query = hasibshah_news_get_section_posts(
 				<div class="latest-headlines-feed">
 					<div class="feed-header">
 						<span class="feed-pulse-dot" aria-hidden="true"></span>
-						<h3 class="feed-title"><?php esc_html_e( 'সর্বশেষ সংবাদ', 'hasibshah-news' ); ?></h3>
+						<h2 class="feed-title"><?php esc_html_e( 'সর্বশেষ সংবাদ', 'hasibshah-news' ); ?></h2>
 					</div><!-- .feed-header -->
 
 					<ul class="latest-feed-list">
@@ -183,9 +183,9 @@ $latest_query = hasibshah_news_get_section_posts(
 										<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
 										<?php echo esc_html( hasibshah_news_time_ago() ); ?>
 									</div>
-									<h4 class="feed-item-title news-card-title-clamp-2">
+									<h3 class="feed-item-title news-card-title-clamp-2">
 										<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-									</h4>
+									</h3>
 								</li>
 								<?php
 							endwhile;
@@ -193,7 +193,7 @@ $latest_query = hasibshah_news_get_section_posts(
 							?>
 						<?php else : ?>
 							<li class="latest-feed-item feed-empty-item">
-								<h4 class="feed-item-title"><?php esc_html_e( 'আরও খবর প্রকাশের অপেক্ষায়...', 'hasibshah-news' ); ?></h4>
+								<h3 class="feed-item-title"><?php esc_html_e( 'আরও খবর প্রকাশের অপেক্ষায়...', 'hasibshah-news' ); ?></h3>
 							</li>
 						<?php endif; ?>
 					</ul><!-- .latest-feed-list -->
